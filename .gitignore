@@ -1,0 +1,7 @@
+# Windows junk
+desktop.ini
+Thumbs.db
+
+# IntelliJ User Settings (Don't share your workspace)
+.idea/workspace.xml
+.idea/shelf/
