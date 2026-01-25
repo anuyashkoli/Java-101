@@ -5,3 +5,9 @@ Thumbs.db
 # IntelliJ User Settings (Don't share your workspace)
 .idea/workspace.xml
 .idea/shelf/
+
+# Ignore the compiled java class files
+*.class
+
+# Ignore the entire IntelliJ build output folder
+out/
