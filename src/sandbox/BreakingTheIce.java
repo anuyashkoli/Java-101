@@ -20,7 +20,7 @@ public class BreakingTheIce
          if (temperature <= ice)
          {
             System.out.println("We have ice!");
-            break;
+            machineOn = false;
          }
       }
    }
