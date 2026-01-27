@@ -1,27 +1,36 @@
 package sandbox;
 
-public class HundredthPrime
-{
-   public static void main(String[] args)
-   {
-      int currentNumber = 2;
-      int maxNumber = 101;
+public class HundredthPrime {
+   public static void main(String[] args) {
+      /* Make a code that displays the 100th prime number */
 
-      while (currentNumber <= maxNumber) {
-         for (int divisor = 2; divisor <= currentNumber; divisor++) {
-            if (divisor == currentNumber) {
-               System.out.println(currentNumber + " is a Prime Number");
-               break;
-            }
-            else if (currentNumber % divisor == 0) {
-               System.out.println(currentNumber + " is a Composite Number");
-               break;
-            }
-         }
-         currentNumber++;
+      int startNumber = 2;
+      int maxNumber = 1;
+
+
+      System.out.println("From `while` loop:");
+      while (maxNumber <= 10) {
+
+         System.out.println(startNumber + " x " + maxNumber + " = " + startNumber * maxNumber);
+         maxNumber++;
       }
+
+      System.out.println("From `for` loop:");
+      for (int multiplier = 1; multiplier <= 10; multiplier++) {
+
+         System.out.println(multiplier);
+      }
+
    }
+
+
 }
+
+/*
+Not going ahead without solving this:
+Let's Keep a log:
+27-01-2026 - 12:45
+ */
 
 /*
 I haven't yet got the logic behind it, but the fact that I recreate the code by just looking at the syntax is quite delightful
