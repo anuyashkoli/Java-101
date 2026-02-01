@@ -2,29 +2,31 @@ package sandbox;
 
 public class HundredthPrime {
    public static void main(String[] args) {
-      /* Make a code that displays the 100th prime number */
-
-      // Bouncer
       int counter = 0;
-      int maxNumber = 99;
       int currentNumber = 2;
 
-      while (counter <= maxNumber) {
+      while (counter <= 99) {
          for (int divisor = 2; divisor <= currentNumber; divisor++) {
-            if (divisor == currentNumber) {
-               // System.out.println(divisor + " is Prime number");
-               counter ++;
+            if (currentNumber == divisor) {
+               counter++;
             }
-            else if (currentNumber % divisor == 0){
-               // System.out.println(divisor + " is Composite number");
+            if (currentNumber % divisor == 0) {
                break;
             }
          }
          currentNumber++;
       }
-      System.out.println(currentNumber - 1);
+      System.out.println("\nThe Hundredth Prime Number is: " + (currentNumber - 1));
    }
 }
+
+/*
+01-02-2026 - 21:13
+I have successfully written the program again, but it's mostly from memory, but writing it helps connect the logical dots
+while writing this, I saw that I had previously used 99 as limit for counter; I haven't got the logic of using 99 and 100 and it's impact to the output
+
+ */
+
 
 /*
 Not going ahead without solving this:
@@ -52,19 +54,4 @@ I'll come back to this program later on and would rewrite this !!!
 2) I was doing something with the top level variables and for loop, trying to iterate both divisor and currentNumber parallelly
 3) I have good grasp of if conditionals and for loop, but I have to practise them together and with more complexity
 4) while Loop would take a while
- */
-
-/*
-Incorrect ❌
-Expected: 541
-Actual:
-2 is a Prime Number
-3 is a Prime Number
-4 is a Composite Number
-.
-97 is a Prime Number
-98 is a Composite Number
-99 is a Composite Number
-100 is a Composite Number
-
  */
