@@ -23,7 +23,7 @@ public class HundredthPrime {
 /*
 01-02-2026 - 21:13
 I have successfully written the program again, but it's mostly from memory, but writing it helps connect the logical dots
-while writing this, I saw that I had previously used 99 as limit for counter; I haven't got the logic of using 99 and 100 and it's impact to the output
+while writing this, I saw that I had previously used 99 as limit for counter; I haven't got the logic of using 99 and 100, and it's impact to the output
 
  */
 
