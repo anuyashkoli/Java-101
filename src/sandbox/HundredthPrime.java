@@ -2,10 +2,10 @@ package sandbox;
 
 public class HundredthPrime {
    public static void main(String[] args) {
-      int counter = 0;
-      int currentNumber = 2;
+      int counter = 1;
+      int currentNumber = 1;
 
-      while (counter <= 99) {
+      while (counter <= 100) {
          for (int divisor = 2; divisor <= currentNumber; divisor++) {
             if (currentNumber == divisor) {
                counter++;
@@ -20,6 +20,11 @@ public class HundredthPrime {
    }
 }
 
+
+/*
+28-05-2026
+Though I'm writing this on the date mentioned, I have done this way before as a revision, and I thought I would ace it, but couldn't due to my restrictive thinking if that's what should call it, and I got to know that there are lot of things that you forgot in 3 months gap, there are way lots of things that you still remember to START AGAIN
+*/
 /*
 01-02-2026 - 21:13
 I have successfully written the program again, but it's mostly from memory, but writing it helps connect the logical dots
