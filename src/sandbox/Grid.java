@@ -4,6 +4,7 @@ public class Grid {
     public static void main(String[] args) {
         square();
         triangle();
+        table();
     }
 
     public static void square() {
@@ -19,6 +20,16 @@ public class Grid {
             System.out.println();
             for (int liner = 1; liner <= iterator; liner++) {
                 System.out.print("⭐");
+            }
+        }
+    }
+
+    public static void table() {
+        System.out.println("\n\nMultiplication Table: 1 to 10");
+        for (int multiplier = 1; multiplier <= 10; multiplier++) {
+            System.out.println();
+            for (int multiplicand = 1; multiplicand <= 10; multiplicand ++) {
+                System.out.print("\t" + multiplier*multiplicand + "\t");
             }
         }
     }
