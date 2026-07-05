@@ -23,7 +23,7 @@ public class One2Hundred {
     }
 
     public static void EvenOut() {
-        System.out.println("\n\nEven Numbers");
+        System.out.print("\n\nEven Numbers: ");
         for (int i = 0; i <= 100; i++) {
             if (i % 2 == 0) {
                 System.out.print(i + ", ");
@@ -51,7 +51,7 @@ public class One2Hundred {
 
 }
 
-// Assignment 01
+// Assignment 01 - Loop Mastery
 /*
 Print 1 to 100.
 Print 100 down to 1.
