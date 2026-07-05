@@ -3,6 +3,7 @@ package sandbox.Arrays;
 public class ArrayMastery {
     public static void main(String Args[]) {
         theSearcher();
+        theHeavyweight();
     }
 
     public static int[] numbers = {15, 22, 8, 42, 17, 9, 33, 50, 4, 11};
@@ -14,6 +15,17 @@ public class ArrayMastery {
                 System.out.println(numbers[searcher]);
             }
         }
+    }
+
+    public static void theHeavyweight () {
+        System.out.println("The Heavyweight Integer: ");
+        int maxSize = 0;
+        for (int weigher = 0; weigher < numbers.length; weigher++) {
+            if (numbers[weigher] > maxSize) {
+                maxSize = numbers[weigher];
+            }
+        }
+        System.out.print(maxSize);
     }
 }
 
