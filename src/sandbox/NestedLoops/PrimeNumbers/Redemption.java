@@ -1,8 +1,12 @@
 package sandbox.NestedLoops.PrimeNumbers;
 
+import static sandbox.NestedLoops.PrimeNumbers.RedRedemption.prime;
+
 public class Redemption {
     public static void main(String[] args) {
-        System.out.println(isPrime(541));
+        System.out.println(isPrime(100));
+        System.out.println(prime(100));
+
     }
 
     public static boolean isPrime(int number) {
