@@ -5,6 +5,7 @@ public class One2Hundred {
         tillHundred();
         tillOne();
         EvenOut();
+        GaussTheBoss();
     }
 
     public static void tillHundred() {
@@ -21,7 +22,7 @@ public class One2Hundred {
         }
     }
 
-    public static void EvenOut () {
+    public static void EvenOut() {
         System.out.println("\n\nEven Numbers");
         for (int i = 0; i <= 100; i++) {
             if (i % 2 == 0) {
@@ -33,6 +34,21 @@ public class One2Hundred {
             }
         }
     }
+
+    public static void GaussTheBoss() {
+        int sum = 0;
+        System.out.println("\n\n ");
+        for (int i = 0; i <= 100; i++) {
+            if (i == 100) {
+                System.out.print(i);
+            } else {
+                System.out.print(i + " + ");
+            }
+            sum = sum + i;
+        }
+        System.out.print(" = " + sum);
+    }
+
 }
 
 // Assignment 01
