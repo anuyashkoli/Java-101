@@ -8,29 +8,33 @@ public class Grid {
     }
 
     public static void square() {
-        System.out.println("Star Grid");
-        for (int stripe = 1; stripe <= 5; stripe++) {
-            System.out.println("⭐ ⭐ ⭐ ⭐ ⭐");
+        System.out.println("\nStar Grid");
+        int gridSize = 20;
+        for (int column = 1; column <= gridSize; column++) {
+            for (int row = 1; row <= gridSize; row++) {
+                System.out.print("⭐");
+            }
+            System.out.println();
         }
     }
 
     public static void triangle() {
         System.out.println("\nRight-angled Triangle");
         for (int iterator = 1; iterator <= 5; iterator++) {
-            System.out.println();
             for (int liner = 1; liner <= iterator; liner++) {
                 System.out.print("⭐");
             }
+            System.out.println();
         }
     }
 
     public static void table() {
         System.out.println("\n\nMultiplication Table: 1 to 10");
         for (int multiplier = 1; multiplier <= 10; multiplier++) {
-            System.out.println();
-            for (int multiplicand = 1; multiplicand <= 10; multiplicand ++) {
-                System.out.print("\t" + multiplier*multiplicand + "\t");
+            for (int multiplicand = 1; multiplicand <= 10; multiplicand++) {
+                System.out.print("\t" + multiplier * multiplicand + "\t");
             }
+            System.out.println();
         }
     }
 }
