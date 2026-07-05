@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.NestedLoops;
 
 public class FuzzBuzz {
     public static void main(String[] args) {

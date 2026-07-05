@@ -1,4 +1,4 @@
-package sandbox;
+package sandbox.NestedLoops;
 
 public class One2Hundred {
     public static void main(String[] args) {
