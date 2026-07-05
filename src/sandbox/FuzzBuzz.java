@@ -1,8 +1,8 @@
 package sandbox;
 
 public class FuzzBuzz {
-    static void main() {
-        for (int i = 0; i <= 101; i++) {
+    public static void main(String[] args) {
+        for (int i = 0; i <= 100; i++) {
             if(i % 3 == 0 && i % 5 == 0) {
                 System.out.println(i + " FUZZBUZZ");
             } else if (i % 3 == 0) {

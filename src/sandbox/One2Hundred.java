@@ -1,7 +1,7 @@
 package sandbox;
 
 public class One2Hundred {
-    static void main() {
+    public static void main(String[] args) {
         tillHundred();
         tillOne();
         EvenOut();
@@ -24,13 +24,9 @@ public class One2Hundred {
 
     public static void EvenOut() {
         System.out.print("\n\nEven Numbers: ");
-        for (int i = 0; i <= 100; i++) {
+        for (int i = 0; i <= 50; i++) {  // No More Chalta Hain, Mindset
             if (i % 2 == 0) {
                 System.out.print(i + ", ");
-            }
-
-            if (i > 50) { // I could have just limit the for loop itself, but chal na !!!!
-                break;
             }
         }
     }
