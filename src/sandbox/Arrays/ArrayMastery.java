@@ -1,7 +1,7 @@
 package sandbox.Arrays;
 
 public class ArrayMastery {
-    public static void main(String Args[]) {
+    public static void main(String[] Args) {
         divider();
         theSearcher();
         divider();
