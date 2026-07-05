@@ -2,23 +2,31 @@ package sandbox.Arrays;
 
 public class ArrayMastery {
     public static void main(String Args[]) {
+        divider();
         theSearcher();
+        divider();
         theHeavyweight();
+        divider();
+        theReverser();
     }
 
     public static int[] numbers = {15, 22, 8, 42, 17, 9, 33, 50, 4, 11};
 
+    public static void divider () {
+        System.out.print("\n");
+    }
+
     public static void theSearcher() {
-        System.out.println("Array Elements Greater than 20: ");
+        System.out.print("Array Elements Greater than 20:");
         for (int searcher = 0; searcher < numbers.length; searcher++) {
             if (numbers[searcher] > 20) {
-                System.out.println(numbers[searcher]);
+                System.out.print(" " + numbers[searcher]);
             }
         }
     }
 
     public static void theHeavyweight () {
-        System.out.println("The Heavyweight Integer: ");
+        System.out.print("The Heavyweight Integer: ");
         int maxSize = 0;
         for (int weigher = 0; weigher < numbers.length; weigher++) {
             if (numbers[weigher] > maxSize) {
@@ -26,6 +34,14 @@ public class ArrayMastery {
             }
         }
         System.out.print(maxSize);
+    }
+
+    public static void theReverser () {
+        System.out.print("Array Elements in Reverse Mode: ");
+        int arrayLength = numbers.length - 1;
+        for (int reverser = arrayLength; reverser >= 0; reverser--) {
+            System.out.print(" " + numbers[reverser]);
+        }
     }
 }
 
