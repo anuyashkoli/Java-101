@@ -8,13 +8,14 @@ public class StringMastery {
     static Scanner ask = new Scanner(System.in);
 
     // Main Method
-    public static void main (String[] Args) {
+    public static void main(String[] Args) {
         verticalSpeller();
         vowelHunter();
+        palindromeBoss();
     }
 
     // The Vertical Speller Method - Takes String and prints letters; Vertically
-    public static void verticalSpeller () {
+    public static void verticalSpeller() {
         System.out.println("Enter a single word: ");
         String singleWord = ask.nextLine();
         for (int letter = 0; letter < singleWord.length(); letter++) {
@@ -22,19 +23,38 @@ public class StringMastery {
         }
     }
 
-    public static void vowelHunter () {
+    public static void vowelHunter() {
         System.out.println("Enter a sentence: ");
         String sentence = ask.nextLine();
         sentence = sentence.toLowerCase();
         int vowelCounter = 0;
         for (int letter = 0; letter < sentence.length(); letter++) {
             char currentLetter = sentence.charAt(letter);
-            if (currentLetter == 'a' || currentLetter == 'e' || currentLetter == 'i' || currentLetter == 'o' || currentLetter == 'u' ) {
+            if (currentLetter == 'a' || currentLetter == 'e' || currentLetter == 'i' || currentLetter == 'o' || currentLetter == 'u') {
                 vowelCounter++;
             }
         }
         System.out.println("There are : " + vowelCounter + " vowels");
     }
+
+    public static void palindromeBoss() {
+        String reverseWord = "";
+        System.out.println("Enter your word to check: ");
+        String word = ask.nextLine();
+
+        for (int letter = word.length() - 1; letter >= 0; letter --) {
+            char currentLetter = word.charAt(letter);
+            reverseWord = reverseWord + currentLetter;
+        }
+
+        if (word.equals(reverseWord)) {
+            System.out.println(word + " is a Palindrome");
+        } else {
+            System.out.println(word + " is not a Palindrome");
+        }
+    }
+
+
 }
 
 // TASKs
