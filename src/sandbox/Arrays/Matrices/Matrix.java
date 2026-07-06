@@ -46,17 +46,11 @@ public class Matrix {
     }
 
     public static void theHacker() {
-        int arrayCenter = arraySize / 2;
+        int centerRow = matrix.length / 2;
+        int centerColumn = matrix[0].length / 2;
 
-        for (int forRow = 0; forRow <= arraySize; forRow ++) {
-            for (int forColumn = 0; forColumn <= arraySize; forColumn++) {
-                if (forRow == forColumn) {
-                    if (forRow == arrayCenter) {
-                        matrix[forRow][forColumn] = 99;
-                    }
-                }
-            }
-        }
+        matrix[centerRow][centerColumn] = 99;
+
         System.out.print("\nUpdated Board ");
         thePrinter();
     }
