@@ -29,15 +29,7 @@ public class StringMastery {
         int vowelCounter = 0;
         for (int letter = 0; letter < sentence.length(); letter++) {
             char currentLetter = sentence.charAt(letter);
-            if (currentLetter == 'a') {
-                vowelCounter++;
-            } else if (currentLetter == 'e') {
-                vowelCounter++;
-            } else if (currentLetter == 'i') {
-                vowelCounter++;
-            } else if (currentLetter == 'o') {
-                vowelCounter++;
-            } else if (currentLetter == 'u') {
+            if (currentLetter == 'a' || currentLetter == 'e' || currentLetter == 'i' || currentLetter == 'o' || currentLetter == 'u' ) {
                 vowelCounter++;
             }
         }
