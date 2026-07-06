@@ -9,6 +9,8 @@ public class Listener {
     static Scanner inputListener = new Scanner(System.in);
     public static void main() {
         divider();
+        theGreeter();
+        divider();
         theCalculator();
     }
 
@@ -20,10 +22,16 @@ public class Listener {
         System.out.print("Enter Second Number: ");
         float secondNumber = inputListener.nextFloat();
 
-        System.out.println("Addition: " + firstNumber + secondNumber);
+        System.out.println("Addition: " + (firstNumber + secondNumber));
         System.out.println("Subtraction: " + (firstNumber - secondNumber));
         System.out.println("Multiplication: " + firstNumber * secondNumber);
         System.out.println("Division: " + firstNumber / secondNumber);
+    }
+
+    public static void theGreeter() {
+        System.out.println("What's your name ?");
+        String myName = inputListener.nextLine();
+        System.out.println("Hi, " + myName + ", Enjoy Java ☕");
     }
 
 
