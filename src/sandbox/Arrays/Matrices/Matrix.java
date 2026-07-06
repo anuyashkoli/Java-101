@@ -50,6 +50,7 @@ public class Matrix {
         int centerColumn = matrix[0].length / 2;
 
         matrix[centerRow][centerColumn] = 99;
+        // matrix[matrix.length / 2][matrix[0].length] = 99; One Liner
 
         System.out.print("\nUpdated Board ");
         thePrinter();
