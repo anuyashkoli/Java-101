@@ -12,6 +12,8 @@ public class Listener {
         theGreeter();
         divider();
         theCalculator();
+        divider();
+        notFunny();
     }
 
     public static void theCalculator () {
@@ -34,5 +36,14 @@ public class Listener {
         System.out.println("Hi, " + myName + ", Enjoy Java ☕");
     }
 
+    public static void notFunny() {
+        System.out.println("Aur kitni baar sorry kehna padega?");
+        System.out.println("Jab tak 🫀👈se nahi nikalta tab tak, par fhilhaal ");
+        int intiBaar = inputListener.nextInt();
+        System.out.println(intiBaar + " baar bhi chalega");
+        for (int sorryConter = 0; sorryConter < intiBaar; sorryConter++) {
+            System.out.println("I'm Sorry, Arjun 🏹");
+        }
+    }
 
 }
