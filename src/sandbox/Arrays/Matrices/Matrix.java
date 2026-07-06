@@ -38,8 +38,7 @@ public class Matrix {
                 System.out.print("\t");
                 if (forRow == forColumn) {
                     System.out.print(matrix[forRow][forColumn]);
-                }
-                if (forRow != forColumn) {
+                } else {
                     System.out.print("0");
                 }
             }
