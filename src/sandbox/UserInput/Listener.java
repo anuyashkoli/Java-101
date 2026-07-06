@@ -7,7 +7,7 @@ import static sandbox.Arrays.ArrayMastery.divider;
 public class Listener {
 
     static Scanner inputListener = new Scanner(System.in);
-    public static void main() {
+    public static void main(String[] args) {
         divider();
         theGreeter();
         divider();
@@ -45,5 +45,6 @@ public class Listener {
             System.out.println("I'm Sorry, Arjun 🏹");
         }
     }
-
 }
+
+// Gemini Gyan - If you ever take a number and then need a String right after, you have to add a blank inputListener.nextLine(); in between to "eat" the garbage 'Enter' key. Keep this in mind for the future.
