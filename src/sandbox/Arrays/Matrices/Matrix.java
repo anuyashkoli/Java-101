@@ -1,8 +1,10 @@
 package sandbox.Arrays.Matrices;
 
+import static sandbox.Arrays.ArrayMastery.divider;
+
 public class Matrix {
 
-    static int [][] matrix = {
+    static int[][] matrix = {
             {1, 2, 3},
             {4, 5, 6},
             {7, 8, 9},
@@ -11,14 +13,31 @@ public class Matrix {
 
     public static void main(String[] Args) {
         thePrinter();
+        divider();
+        karna();
     }
 
-    public static void thePrinter () {
-        for (int forRow = 0; forRow <= arraySize; forRow ++) {
+    public static void thePrinter() {
+        for (int forRow = 0; forRow <= arraySize; forRow++) {
             System.out.println();
             for (int forColumn = 0; forColumn <= arraySize; forColumn++) {
                 System.out.print(matrix[forRow][forColumn]);
                 System.out.print("\t");
+            }
+        }
+    }
+
+    public static void karna() {
+        for (int forRow = 0; forRow <= arraySize; forRow++) {
+            System.out.println();
+            for (int forColumn = 0; forColumn <= arraySize; forColumn++) {
+                System.out.print("\t");
+                if (forRow == forColumn) {
+                    System.out.print(matrix[forRow][forColumn]);
+                }
+                if (forRow != forColumn) {
+                    System.out.print("0");
+                }
             }
         }
     }
