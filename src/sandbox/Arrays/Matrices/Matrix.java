@@ -15,9 +15,12 @@ public class Matrix {
         thePrinter();
         divider();
         karna();
+        divider();
+        theHacker();
     }
 
     public static void thePrinter() {
+        System.out.print("\nPrinting 3x3 Matrix");
         for (int forRow = 0; forRow <= arraySize; forRow++) {
             System.out.println();
             for (int forColumn = 0; forColumn <= arraySize; forColumn++) {
@@ -28,6 +31,7 @@ public class Matrix {
     }
 
     public static void karna() {
+        System.out.print("\nPrinting Diagonal Elements and putting 0 everywhere else");
         for (int forRow = 0; forRow <= arraySize; forRow++) {
             System.out.println();
             for (int forColumn = 0; forColumn <= arraySize; forColumn++) {
@@ -41,6 +45,23 @@ public class Matrix {
             }
         }
     }
+
+    public static void theHacker() {
+        int arrayCenter = arraySize / 2;
+
+        for (int forRow = 0; forRow <= arraySize; forRow ++) {
+            for (int forColumn = 0; forColumn <= arraySize; forColumn++) {
+                if (forRow == forColumn) {
+                    if (forRow == arrayCenter) {
+                        matrix[forRow][forColumn] = 99;
+                    }
+                }
+            }
+        }
+        System.out.print("\nUpdated Board ");
+        thePrinter();
+    }
+
 }
 
 // Tasks
