@@ -5,9 +5,14 @@ import java.util.Scanner;
 import static sandbox.Arrays.ArrayMastery.divider;
 
 public class Listener {
+
+    static Scanner inputListener = new Scanner(System.in);
     public static void main() {
-        Scanner inputListener = new Scanner(System.in);
         divider();
+        theCalculator();
+    }
+
+    public static void theCalculator () {
         System.out.println("Calculator");
 
         System.out.print("Enter First Number: ");
@@ -19,8 +24,7 @@ public class Listener {
         System.out.println("Subtraction: " + (firstNumber - secondNumber));
         System.out.println("Multiplication: " + firstNumber * secondNumber);
         System.out.println("Division: " + firstNumber / secondNumber);
-
-        inputListener.close();
-
     }
+
+
 }
