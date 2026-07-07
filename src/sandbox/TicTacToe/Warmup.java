@@ -98,7 +98,7 @@ public class Warmup {
         if (board[0][0] != '-' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             System.out.println(state + " won");
             gameOn = false;
-        } else if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[1][0]) {
+        } else if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
             System.out.println(state + " won");
             gameOn = false;
         }
