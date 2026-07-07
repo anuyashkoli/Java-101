@@ -10,6 +10,7 @@ public class Warmup {
 
     static char state = 'X';
     static boolean gameOn = true;
+    static int turns = 0;
 
     public static void main(String[] Args) {
         Canvas();
@@ -53,10 +54,12 @@ public class Warmup {
             if (board[userRow][userColumn] == '-') {  // Checks if the cell is blank / unmarked
                 if (state == 'X') {
                     board[userRow][userColumn] = 'X';
+                    turns++;
                     callTheReferee();
                     state = 'O';
                 } else {
                     board[userRow][userColumn] = 'O';
+                    turns++;
                     callTheReferee();
                     state = 'X';
                 }
@@ -98,6 +101,11 @@ public class Warmup {
         } else if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[1][0]) {
             System.out.println(state + " won");
             gameOn = false;
+        }
+
+        if (turns == 9) {
+            gameOn = false;
+            System.out.println("Cat's Draw");
         }
     }
 
