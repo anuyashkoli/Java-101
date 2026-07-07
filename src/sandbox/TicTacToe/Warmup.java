@@ -39,24 +39,33 @@ public class Warmup {
         System.out.println("\n" + state + "'s turn");
         System.out.print("Enter you desired row: ");
         int userRow = ask.nextInt();
-        System.out.print("\nEnter your desired column: ");
+        System.out.print("Enter your desired column: ");
         int userColumn = ask.nextInt();
 
-        if (state == 'X') {
-            board[userRow][userColumn] = 'X';
-            state = 'O';
+        if (userRow >= board.length || userColumn >= board.length) {  // '>' was crashing the code while entering 3
+            System.out.println("Andar hi khelne ka, Bahar nahi jaaneka !!");
+            System.out.println("Phir se khel");
+            theMove();
         } else {
-            board[userRow][userColumn] = 'O';
-            state = 'X';
+            if (board[userRow][userColumn] == '-') {
+                if (state == 'X') {
+                    board[userRow][userColumn] = 'X';
+                    state = 'O';
+                } else {
+                    board[userRow][userColumn] = 'O';
+                    state = 'X';
+                }
+            } else {
+                System.out.println("Already Marked with " + board[userRow][userColumn]);
+            }
         }
-
-        printBoard();
     }
 
     public static void gameLoop () {
         for (int rowCell = 0; rowCell < board.length; rowCell++) {
             for (int columnCell = 0; columnCell < board.length; columnCell++) {
                 theMove(); // It would run until the iterates to all cells
+                printBoard(); // Printing board here will avoid board duplication
             }
         }
     }
@@ -70,8 +79,10 @@ Players must alternate turns automatically (Player 'X' moves, then Player 'O' mo
 
 Task 2 (The Bouncer):
 Validate the user's input. A player cannot place a piece on a coordinate that is already taken. A player cannot crash the game by entering a number outside the 0-2 range. (Make them try again if they mess up).
+
 Task 3 (The Referee):
 After every single move, the program must check if the current player has won. A win is 3 matching characters in a row (horizontally, vertically, or diagonally). If a win is detected, announce the winner and terminate the game loop.
+
 Task 4 (The Draw):
 If all 9 spaces are filled and no one has won, announce a "Cat's Game" (Draw) and terminate the loop.
 */
