@@ -16,6 +16,7 @@ public class Warmup {
         gameLoop();
     }
 
+    // Initialise the Board
     public static void Canvas () {
         for (int cellRow = 0; cellRow < board.length; cellRow++ ) {
             System.out.println();
@@ -25,6 +26,7 @@ public class Warmup {
         }
     }
 
+    // Reusable method for printing board
     public static void printBoard () {
         for (int cellRow = 0; cellRow < board.length; cellRow++) {
             System.out.println();
@@ -35,6 +37,7 @@ public class Warmup {
         }
     }
 
+    // Handles User Moves; Validates User Moves
     public static void theMove () {
         System.out.println("\n" + state + "'s turn");
         System.out.print("Enter you desired row: ");
@@ -61,6 +64,7 @@ public class Warmup {
         }
     }
 
+    // Loops the game - Asks for Moves; Prints Board
     public static void gameLoop () {
         for (int rowCell = 0; rowCell < board.length; rowCell++) {
             for (int columnCell = 0; columnCell < board.length; columnCell++) {
