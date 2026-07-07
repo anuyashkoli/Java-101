@@ -2,12 +2,15 @@ package sandbox.TicTacToe;
 
 import java.util.Scanner;
 
+import static sandbox.Arrays.ArrayMastery.divider;
+
 public class Warmup {
     static Scanner ask = new Scanner(System.in);
     static char[][] board = new char[3][3];
 
     public static void main (String[] Args) {
         Canvas();
+        printBoard();
     }
 
     public static void Canvas () {
@@ -16,6 +19,17 @@ public class Warmup {
             for (int cellColumn = 0; cellColumn <=board.length - 1; cellColumn ++) {
                 System.out.print("  ");
                 board[cellRow][cellColumn] = '-';
+                System.out.print("[" + board[cellRow][cellColumn] + "]");
+            }
+        }
+    }
+
+    public static void printBoard () {
+        divider();
+        for (int cellRow = 0; cellRow <= board.length - 1; cellRow++) {
+            System.out.println();
+            for (int cellColumn = 0; cellColumn <= board.length - 1; cellColumn ++) {
+                System.out.print("  ");
                 System.out.print("[" + board[cellRow][cellColumn] + "]");
             }
         }
