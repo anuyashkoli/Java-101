@@ -15,7 +15,7 @@ public class Warmup {
     }
 
     public static void Canvas () {
-        for (int cellRow = 0; cellRow <= board.length - 1; cellRow++ ) {
+        for (int cellRow = 0; cellRow < board.length; cellRow++ ) {
             System.out.println();
             for (int cellColumn = 0; cellColumn <=board.length - 1; cellColumn ++) {
                 board[cellRow][cellColumn] = '-';
@@ -25,9 +25,9 @@ public class Warmup {
 
     public static void printBoard () {
         divider();
-        for (int cellRow = 0; cellRow <= board.length - 1; cellRow++) {
+        for (int cellRow = 0; cellRow < board.length; cellRow++) {
             System.out.println();
-            for (int cellColumn = 0; cellColumn <= board.length - 1; cellColumn ++) {
+            for (int cellColumn = 0; cellColumn < board.length; cellColumn ++) {
                 System.out.print("  ");
                 System.out.print("[" + board[cellRow][cellColumn] + "]");
             }
