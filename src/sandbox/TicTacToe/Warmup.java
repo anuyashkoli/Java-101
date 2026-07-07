@@ -11,15 +11,14 @@ public class Warmup {
     public static void main (String[] Args) {
         Canvas();
         printBoard();
+        theMove();
     }
 
     public static void Canvas () {
         for (int cellRow = 0; cellRow <= board.length - 1; cellRow++ ) {
             System.out.println();
             for (int cellColumn = 0; cellColumn <=board.length - 1; cellColumn ++) {
-                System.out.print("  ");
                 board[cellRow][cellColumn] = '-';
-                System.out.print("[" + board[cellRow][cellColumn] + "]");
             }
         }
     }
@@ -33,6 +32,16 @@ public class Warmup {
                 System.out.print("[" + board[cellRow][cellColumn] + "]");
             }
         }
+    }
+
+    public static void theMove () {
+        divider();
+        System.out.print("Enter you desired row: ");
+        int userRow = ask.nextInt();
+        System.out.print("\nEnter your desired column: ");
+        int userColumn = ask.nextInt();
+        board[userRow][userColumn] = 'X';
+        printBoard();
     }
 }
 
