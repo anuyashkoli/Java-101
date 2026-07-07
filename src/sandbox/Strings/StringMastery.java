@@ -50,7 +50,7 @@ public class StringMastery {
         if (word.equals(reverseWord)) {
             System.out.println(word + " is a Palindrome");
         } else {
-            System.out.println(word + " is not a Palindrome");
+            System.out.println(word + " is not a Palindrome; " + "\nReversed Word: "  + reverseWord);
         }
     }
 
