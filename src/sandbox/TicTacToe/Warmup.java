@@ -8,10 +8,12 @@ public class Warmup {
     static Scanner ask = new Scanner(System.in);
     static char[][] board = new char[3][3];
 
+    static char state = 'X';
+
     public static void main (String[] Args) {
         Canvas();
         printBoard();
-        theMove();
+        gameLoop();
     }
 
     public static void Canvas () {
@@ -24,7 +26,6 @@ public class Warmup {
     }
 
     public static void printBoard () {
-        divider();
         for (int cellRow = 0; cellRow < board.length; cellRow++) {
             System.out.println();
             for (int cellColumn = 0; cellColumn < board.length; cellColumn ++) {
@@ -35,25 +36,42 @@ public class Warmup {
     }
 
     public static void theMove () {
-        divider();
+        System.out.println("\n" + state + "'s turn");
         System.out.print("Enter you desired row: ");
         int userRow = ask.nextInt();
         System.out.print("\nEnter your desired column: ");
         int userColumn = ask.nextInt();
-        board[userRow][userColumn] = 'X';
+
+        if (state == 'X') {
+            board[userRow][userColumn] = 'X';
+            state = 'O';
+        } else {
+            board[userRow][userColumn] = 'O';
+            state = 'X';
+        }
+
         printBoard();
+    }
+
+    public static void gameLoop () {
+        for (int rowCell = 0; rowCell < board.length; rowCell++) {
+            for (int columnCell = 0; columnCell < board.length; columnCell++) {
+                theMove(); // It would run until the iterates to all cells
+            }
+        }
     }
 }
 
 // TASKs
 /*
-Task 1 (The Canvas):
-Initialize a 3x3 grid and fill every empty coordinate with a dash ('-').
+Task 1 (The Game Loop):
+Implement a continuous loop so the game keeps asking for moves.
+Players must alternate turns automatically (Player 'X' moves, then Player 'O' moves, then 'X', etc.).
 
-Task 2 (The Printer):
-Create a reusable method named printBoard() that prints the current state of your grid to the console in a visually clean 3x3 format.
-
-Task 3 (The First Move):
-Prompt the user to enter a row and a column.
-Place an 'X' at that exact coordinate on the board, and reprint the board to prove the move was successful.
+Task 2 (The Bouncer):
+Validate the user's input. A player cannot place a piece on a coordinate that is already taken. A player cannot crash the game by entering a number outside the 0-2 range. (Make them try again if they mess up).
+Task 3 (The Referee):
+After every single move, the program must check if the current player has won. A win is 3 matching characters in a row (horizontally, vertically, or diagonally). If a win is detected, announce the winner and terminate the game loop.
+Task 4 (The Draw):
+If all 9 spaces are filled and no one has won, announce a "Cat's Game" (Draw) and terminate the loop.
 */
