@@ -31,17 +31,18 @@ public class ATM {
                     break;
 
                 case 2:  // Deposit
-                    System.out.println("Enter amount to be deposited: ₹");
+                    System.out.println("Enter amount to be deposited: ");
                     int depositAmount = ask.nextInt();
                     if (depositAmount <= 0) {
                         System.out.println("Minimum ₹1 Deposit required");
                     } else {
                         accountBalance = accountBalance + depositAmount;
-                        System.out.println("Amount Deposited: " + depositAmount); // To take Deposit Amount
+                        System.out.println("Amount Deposited: ₹" + depositAmount); // To take Deposit Amount
                     }
                     break;
 
                 case 3:  // Withdraw
+                    System.out.println("Enter the amount to Withdraw: ");
                     int withdrawalAmount = ask.nextInt();
                     if (withdrawalAmount <= 0) {
                         System.out.println("Kya karoge itne dhanraashi ka ?");
