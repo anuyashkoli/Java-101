@@ -28,7 +28,7 @@ public class CaesarCipher {
     }
 
     public static void encrypt() {
-        System.out.println("\nCaesar's Cipher");
+        System.out.println("\nCaesar's Cipher\n");
         System.out.print("Enter your plaintext: ");
         plaintext = ask.nextLine();
         plaintext = plaintext.toUpperCase();
@@ -49,8 +49,29 @@ public class CaesarCipher {
                 }
             }
         }
-        System.out.println("Plaintext: " + plaintext);
-        System.out.println("Ciphertext: " + ciphertext);
+        System.out.print("Plaintext: " + plaintext);
+        plaintext = ""; // Emptying the variable; to use it get the plaintext back
+        System.out.print(" => Ciphertext: " + ciphertext);
+        decrypt();
+    }
+
+    public static void decrypt() {
+        System.out.println("\n");
+        System.out.println("Decrypting Ciphertext: " + ciphertext + ", using cipherkey: " + cipherKey);
+
+        for (int letter = 0; letter < ciphertext.length(); letter++) {
+            for (int mapper = 0; mapper < alphabets.length; mapper++) {
+                if (ciphertext.charAt(letter) == alphabets[mapper]) {
+                    if ((mapper - cipherKey) < startEnd) {
+                        overlapper = alphabets.length + (mapper - cipherKey);
+                        plaintext = plaintext + alphabets[overlapper];
+                    } else {
+                        plaintext = plaintext + alphabets[mapper - cipherKey];
+                    }
+                }
+            }
+        }
+        System.out.println("Retrieved Plaintext: " + plaintext);
     }
 }
 
