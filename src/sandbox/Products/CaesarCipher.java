@@ -5,12 +5,22 @@ import java.util.Scanner;
 public class CaesarCipher {
 
     static char[] alphabets = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    static int startEnd = 0;
+    static int lastEnd = alphabets.length - 1;
     static String plaintext;
     static int cipherKey;
     static Scanner ask = new Scanner(System.in);
 
     public static void main(String[] Args) {
         encrypt();
+    }
+
+    public static void thePrinter () {
+        for (int mapper = 0; mapper < alphabets.length; mapper++) {
+            // Printing Alphabets
+            System.out.print("[" + alphabets[mapper] + "-" + mapper + "]");
+            System.out.print(" ");
+        }
     }
 
     public static void encrypt() {
@@ -22,17 +32,10 @@ public class CaesarCipher {
         System.out.print("Enter your Key: ");
         cipherKey = ask.nextInt();
 
-        for (int mapper = 0; mapper < alphabets.length; mapper++) {
-            // Printing Alphabets
-            System.out.print(alphabets[mapper]);
-            System.out.print(" ");
+        thePrinter();
 
-            // Trying to change positions
-            alphabets[mapper] = alphabets[mapper + cipherKey];
-            System.out.println("Dispositioning: ");
-            System.out.print(alphabets[mapper]);
-            System.out.print(" ");
-        }
+
+
 
 
     }
