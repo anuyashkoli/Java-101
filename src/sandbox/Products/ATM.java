@@ -5,17 +5,32 @@ import java.util.Scanner;
 public class ATM {
 
     static int accountBalance = 5000; // Default Balance ₹5000
-    static String accountPin = "1010"; // I think String would be better
+    static String accountPin = "1010"; // I think String would be better; Future Me - It's won't be // Future Me to Past Future Me - It is better
     static Scanner ask = new Scanner(System.in);
-    static boolean isExited = true;
+    static boolean isRunning = false;
+    static boolean loggedIn = false;
 
     public static void main(String[] Args) {
+        userAuthentication();
         theMenu();
     }
 
-    public static void theMenu() {
+    public static void userAuthentication () {
+        while (!loggedIn) {
+            System.out.print("\nEnter Account Pin: ");
+            String userInput = ask.nextLine();
 
-        while (isExited) {
+            if (userInput.equals(accountPin)) {
+                loggedIn = true;
+                isRunning = true;
+            } else {
+                System.out.println("Access Denied");
+            }
+        }
+    }
+
+    public static void theMenu() {
+        while (isRunning) {
             System.out.println("\nSelect any of the following option");
             System.out.println("1) Check Balance");
             System.out.println("2) Deposit");
@@ -58,7 +73,7 @@ public class ATM {
 
                 case 4:  // Exit
                     System.out.println("Have A Nice Day");
-                    isExited = false;
+                    isRunning = false;
                     break;
 
                 default:
