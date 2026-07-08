@@ -1,0 +1,52 @@
+package sandbox.Products;
+
+import java.util.Scanner;
+
+public class CaesarCipher {
+
+    static char[] alphabets = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    static String plaintext;
+    static int cipherKey;
+    static Scanner ask = new Scanner(System.in);
+
+    public static void main(String[] Args) {
+        encrypt();
+    }
+
+    public static void encrypt() {
+        System.out.println("\nCaesar's Cipher");
+        System.out.print("Enter your plaintext: ");
+        plaintext = ask.nextLine();
+        plaintext = plaintext.toUpperCase();
+
+        System.out.print("Enter your Key: ");
+        cipherKey = ask.nextInt();
+
+        for (int mapper = 0; mapper < alphabets.length; mapper++) {
+            // Printing Alphabets
+            System.out.print(alphabets[mapper]);
+            System.out.print(" ");
+
+            // Trying to change positions
+            alphabets[mapper] = alphabets[mapper + cipherKey];
+            System.out.println("Dispositioning: ");
+            System.out.print(alphabets[mapper]);
+            System.out.print(" ");
+        }
+
+
+    }
+}
+
+// The Brief: Build a cryptography tool used by the Roman Empire.
+/* Criteria:
+The user enters a secret message (e.g., "ATTACK").
+The program shifts every letter forward by 3 places in the alphabet and prints the encrypted code (e.g., "DWWDFN").
+It also needs a decryption mode to turn "DWWDFN" back into "ATTACK".*/
+
+/* Like to know, how this works !!
+        char[] alphabets = new char[26];
+        for (int i = 0; i < 26; i++) {
+            alphabets[i] = (char) ('A' + i);
+        }
+*/
