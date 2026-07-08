@@ -10,6 +10,7 @@ public class CaesarCipher {
     static String plaintext;
     static String ciphertext = "";
     static int cipherKey;
+    static int overlapper;
     static Scanner ask = new Scanner(System.in);
 
     public static void main(String[] Args) {
@@ -17,7 +18,7 @@ public class CaesarCipher {
         encrypt();
     }
 
-    public static void thePrinter () {
+    public static void thePrinter() {
         for (int mapper = 0; mapper < alphabets.length; mapper++) {
             // Printing Alphabets
             System.out.print("[" + alphabets[mapper] + "-" + mapper + "]");
@@ -36,10 +37,15 @@ public class CaesarCipher {
         cipherKey = ask.nextInt();
 
         // Mapping plaintext letter to alphabets
-        for (int letter = 0; letter < plaintext.length(); letter++ ) {
+        for (int letter = 0; letter < plaintext.length(); letter++) {
             for (int mapper = 0; mapper < alphabets.length; mapper++) {
                 if (plaintext.charAt(letter) == alphabets[mapper]) {
-                    ciphertext = ciphertext + alphabets[mapper + cipherKey];
+                    if ((mapper + cipherKey) > lastEnd) {
+                        overlapper = (mapper + cipherKey) - alphabets.length;
+                        ciphertext = ciphertext + alphabets[overlapper];
+                    } else {
+                        ciphertext = ciphertext + alphabets[mapper + cipherKey];
+                    }
                 }
             }
         }
