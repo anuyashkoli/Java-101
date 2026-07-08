@@ -8,10 +8,12 @@ public class CaesarCipher {
     static int startEnd = 0;
     static int lastEnd = alphabets.length - 1;
     static String plaintext;
+    static String ciphertext = "";
     static int cipherKey;
     static Scanner ask = new Scanner(System.in);
 
     public static void main(String[] Args) {
+        thePrinter();
         encrypt();
     }
 
@@ -21,6 +23,7 @@ public class CaesarCipher {
             System.out.print("[" + alphabets[mapper] + "-" + mapper + "]");
             System.out.print(" ");
         }
+        System.out.println();
     }
 
     public static void encrypt() {
@@ -32,12 +35,16 @@ public class CaesarCipher {
         System.out.print("Enter your Key: ");
         cipherKey = ask.nextInt();
 
-        thePrinter();
-
-
-
-
-
+        // Mapping plaintext letter to alphabets
+        for (int letter = 0; letter < plaintext.length(); letter++ ) {
+            for (int mapper = 0; mapper < alphabets.length; mapper++) {
+                if (plaintext.charAt(letter) == alphabets[mapper]) {
+                    ciphertext = ciphertext + alphabets[mapper + cipherKey];
+                }
+            }
+        }
+        System.out.println("Plaintext: " + plaintext);
+        System.out.println("Ciphertext: " + ciphertext);
     }
 }
 
