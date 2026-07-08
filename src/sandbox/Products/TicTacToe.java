@@ -1,10 +1,8 @@
-package sandbox.TicTacToe;
+package sandbox.Products;
 
 import java.util.Scanner;
 
-import static sandbox.Arrays.ArrayMastery.divider;
-
-public class Warmup {
+public class TicTacToe {
     static Scanner ask = new Scanner(System.in);
     static char[][] board = new char[3][3];
 
