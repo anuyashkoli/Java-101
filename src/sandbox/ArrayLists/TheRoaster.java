@@ -1,6 +1,5 @@
 package sandbox.ArrayLists;
 
-import java.awt.desktop.SystemEventListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
