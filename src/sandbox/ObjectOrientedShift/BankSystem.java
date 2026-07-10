@@ -10,5 +10,8 @@ public class BankSystem {
 
         arjunAccount.withdraw(1000);
         duryodhanAccount.withdraw(0);
+
+        arjunAccount.showBalance();
+        duryodhanAccount.showBalance();
     }
 }

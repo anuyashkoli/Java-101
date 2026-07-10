@@ -31,4 +31,8 @@ public class BankAccount {
         }
     }
 
+    public void showBalance(){
+        System.out.println("Account Balance: " + balance);
+    }
+
 }
