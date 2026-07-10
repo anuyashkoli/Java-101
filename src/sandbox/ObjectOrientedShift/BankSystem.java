@@ -5,9 +5,10 @@ public class BankSystem {
         BankAccount arjunAccount = new BankAccount("Arjun", 2000);
         BankAccount duryodhanAccount = new BankAccount("Duryodhan", 20000);
 
-        arjunAccount.deposit(18000);
-        duryodhanAccount.deposit(18000);
+        arjunAccount.deposit(1000);
+        duryodhanAccount.deposit(0);
 
-        // Print Final Balance of both of the account
+        arjunAccount.withdraw(1000);
+        duryodhanAccount.withdraw(0);
     }
 }

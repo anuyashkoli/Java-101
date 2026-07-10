@@ -12,8 +12,23 @@ public class BankAccount {
     }
 
     public void deposit(int amount) {
-        balance = balance + amount;
-        System.out.println(ownerName + " deposited " + amount + ". New Balance: " + balance);
+        if (amount <= 0) {
+            System.out.println("Only Amount above ₹1 can be deposited, " + ownerName);
+        } else {
+            balance = balance + amount;
+            System.out.println(ownerName + " deposited " + amount + ". New Balance: " + balance);
+        }
     }
-    // withdraw method
+
+    public void withdraw(int amount) {
+        if (amount <= 0) {
+            System.out.println("Itne paiso ka karoge kya ?, " + ownerName);
+        } else if (balance >= amount) {
+            balance = balance - amount;
+            System.out.println(amount + " has been withdrawn from " + ownerName + "'s Account" + ". \nNew Balance is: " + balance);
+        } else {
+            System.out.println("Low Balance, Can't Withdraw");
+        }
+    }
+
 }
