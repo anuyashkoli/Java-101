@@ -13,11 +13,11 @@ public class TheRoaster {
         while (isRunning) {
             System.out.print("\nEnter a new customer name: ");
             String customerName = ask.nextLine();
-            customerNames.add(customerName);
-            System.out.print("Current Customers: ");
             if (customerName.equalsIgnoreCase("exit")) {
                 isRunning = false;
             } else {
+                customerNames.add(customerName);
+                System.out.print("Current Customers: ");
                 for (int iterator = 0; iterator < customerNames.size(); iterator++) {
                     System.out.print("[");
                     System.out.print(customerNames.get(iterator));
