@@ -15,13 +15,14 @@ public class TheRoaster {
             String customerName = ask.nextLine();
             customerNames.add(customerName);
             System.out.print("Current Customers: ");
-            for (int iterator = 0; iterator < customerNames.size(); iterator++ ) {
-                System.out.print("[");
-                System.out.print(customerNames.get(iterator));
-                System.out.print("]");
-            }
             if (customerName.equalsIgnoreCase("exit")) {
                 isRunning = false;
+            } else {
+                for (int iterator = 0; iterator < customerNames.size(); iterator++) {
+                    System.out.print("[");
+                    System.out.print(customerNames.get(iterator));
+                    System.out.print("]");
+                }
             }
         }
     }
