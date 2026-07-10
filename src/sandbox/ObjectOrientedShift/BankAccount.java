@@ -35,4 +35,13 @@ public class BankAccount {
         System.out.println("Account Balance: " + balance);
     }
 
+    // Getters
+    public String getOwnerName () {
+        return ownerName;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
 }

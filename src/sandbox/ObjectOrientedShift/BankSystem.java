@@ -11,7 +11,18 @@ public class BankSystem {
         arjunAccount.withdraw(1000);
         duryodhanAccount.withdraw(0);
 
-        arjunAccount.showBalance();
-        duryodhanAccount.showBalance();
+        System.out.println(arjunAccount.getOwnerName());
+        System.out.println(arjunAccount.getBalance());
+
+        System.out.println(duryodhanAccount.getOwnerName());
+        System.out.println(duryodhanAccount.getBalance());
+
+        if (arjunAccount.getBalance() == duryodhanAccount.getBalance()) {
+            System.out.println("Same Same but Different but Still Same");
+        } else if (arjunAccount.getBalance() > duryodhanAccount.getBalance()) {
+            System.out.println(arjunAccount.getOwnerName() + " is Richer");
+        } else {
+            System.out.println(duryodhanAccount.getOwnerName() + " is Richer");
+        }
     }
 }
