@@ -18,7 +18,7 @@ public class InputMismatchExceptionHandling {
                 System.out.println("Enter your age: ");
                 int userAge = ask.nextInt();
                 if (userAge >= 18) {
-                    System.out.println("Your an Adult");
+                    System.out.println("You're an Adult");
                 } else {
                     System.out.println("Your are minor");
                 }
