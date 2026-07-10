@@ -2,8 +2,8 @@ package sandbox.ObjectOrientedShift;
 
 public class BankAccount {
     // Attributes
-    String ownerName;
-    int balance;
+    private String ownerName;
+    private int balance;
 
     // Constructor - Object Builder
     public BankAccount(String name, int startingBalance) {
