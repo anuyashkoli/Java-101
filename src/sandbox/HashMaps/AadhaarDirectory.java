@@ -3,27 +3,48 @@ package sandbox.HashMaps;
 import sandbox.ObjectOrientedShift.BankAccount;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
+import java.util.Scanner;
 
 public class AadhaarDirectory {
+    static boolean isRunning = true;
+    static Scanner ask = new Scanner(System.in);
+
     public static void main(String[] args) {
-        // 1. Create
-        Map<String, Integer> userAges = new HashMap<>();
+        Linker();
+    }
 
-        // 2. Add items
-        userAges.put("Alice", 25);
-        userAges.put("Bob", 30);
+    public static void Linker() {
+        BankAccount Alice = new BankAccount("Alice", 1000);
+        BankAccount Bob = new BankAccount("Bob", 1010);
+        BankAccount Batman = new BankAccount("Bruce", 999999999);
 
-        // 3. Read an item
-        System.out.println("Alice's age: " + userAges.get("Alice")); // Outputs 25
+        Map<Integer, BankAccount> linkedAccounts = new HashMap<>();
 
-        // 4. Update an item
-        userAges.put("Alice", 26);
+        linkedAccounts.put(1, Alice);
+        linkedAccounts.put(2, Bob);
+        linkedAccounts.put(3, Batman);
 
-        // 5. Check existence
-        if (userAges.containsKey("Bob")) {
-            System.out.println("Bob is in the map.");
+        while (isRunning) {
+            try {
+                System.out.println("Type an Account Number or q for Exit");
+                int userRequest = ask.nextInt();
+
+                if (linkedAccounts.containsKey(userRequest)) {
+                    System.out.println("Printing Account Details: ");
+                    System.out.println("Account Holder: " + linkedAccounts.get(userRequest).getOwnerName());
+                    System.out.println("Current Balance: " + linkedAccounts.get(userRequest).getBalance() + "\n\n");
+                } else {
+                    System.out.println("🚫 Account Not Found\n\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Enter Numerical Values");
+                ask.nextLine();
+            }
         }
+
+
     }
 }
 
