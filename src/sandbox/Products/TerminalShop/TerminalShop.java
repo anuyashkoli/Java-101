@@ -8,24 +8,19 @@ import java.util.Scanner;
 public class TerminalShop {
     static boolean trapped = true;
     static Scanner ask = new Scanner(System.in);
-    static Map<Integer, Product> productHashMap = new HashMap<>();
+
+
     public static void main(String[] Args) {
-
-    }
-
-    public void theDatabase() {
+        Map<Integer, Product> productHashMap = new HashMap<>();
 
         //Preloading
         Product HP = new Product("HP Laptop", 50000, 10);
         Product Lenovo = new Product("Lenovo Laptop", 55000, 10);
         Product Dell = new Product("Dell Laptop", 60000, 10);
-
         productHashMap.put(1, HP);
         productHashMap.put(2, Lenovo);
         productHashMap.put(3, Dell);
-    }
 
-    public void userTrap() {
         while (trapped) {
             System.out.println("1. View Inventory");
             System.out.println("2. Buy an Item");
@@ -35,14 +30,27 @@ public class TerminalShop {
             switch (userChoice) {
                 case 1:
                     System.out.println("Inventory ⤵️");
-                    for (int mapper = 0; mapper <= productHashMap.size(); mapper++) {
-                        System.out.println(productHashMap.get(mapper).getProductName()); // Product Name
-                        System.out.println(productHashMap.get(mapper).getProductPrice()); // Product Price
-                        System.out.println(productHashMap.get(mapper).getProductStock()); // Product Stock
+                    for (int mapper = 1; mapper <= productHashMap.size(); mapper++) {
+                        System.out.print(productHashMap.get(mapper).getProductName() + ", "); // Product Name
+                        System.out.print(productHashMap.get(mapper).getProductPrice() + ", "); // Product Price
+                        System.out.print(productHashMap.get(mapper).getProductStock() + "\n"); // Product Stock
                     }
+
+                case 2:
+                    System.out.println("Enter the Product ID: ");
+                    int productID = ask.nextInt();
+
+                    if (productHashMap.containsKey(productID)) {
+                        productHashMap.get(productID).productOrder();
+                    }
+
+                    System.out.println("Placing an order 📦");
             }
         }
+
     }
+
+
 }
 
 
