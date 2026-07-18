@@ -1,15 +1,19 @@
 package sandbox.Products.TerminalShop;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class TerminalShop {
+    static boolean trapped = true;
+    static Scanner ask = new Scanner(System.in);
+    static Map<Integer, Product> productHashMap = new HashMap<>();
     public static void main(String[] Args) {
 
     }
 
-    public static void theDatabase() {
-        Map<Integer, Product> productHashMap = new HashMap<>();
+    public void theDatabase() {
 
         //Preloading
         Product HP = new Product("HP Laptop", 50000, 10);
@@ -19,6 +23,25 @@ public class TerminalShop {
         productHashMap.put(1, HP);
         productHashMap.put(2, Lenovo);
         productHashMap.put(3, Dell);
+    }
+
+    public void userTrap() {
+        while (trapped) {
+            System.out.println("1. View Inventory");
+            System.out.println("2. Buy an Item");
+            System.out.println("3. Exit");
+            int userChoice = ask.nextInt();
+
+            switch (userChoice) {
+                case 1:
+                    System.out.println("Inventory ⤵️");
+                    for (int mapper = 0; mapper <= productHashMap.size(); mapper++) {
+                        System.out.println(productHashMap.get(mapper).getProductName()); // Product Name
+                        System.out.println(productHashMap.get(mapper).getProductPrice()); // Product Price
+                        System.out.println(productHashMap.get(mapper).getProductStock()); // Product Stock
+                    }
+            }
+        }
     }
 }
 
