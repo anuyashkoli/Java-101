@@ -58,22 +58,20 @@ public class TerminalShop {
                     case 3:
                         System.out.println("Have A Nice Day");
                         trapped = false;
+                        break;
 
                     default:
                         System.out.println("Try Again");
+                        break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("INVALID OPTION");
                 System.out.println();
                 ask.nextLine();
             }
-
-
         }
 
     }
-
-
 }
 
 
