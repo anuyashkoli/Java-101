@@ -6,9 +6,9 @@ public class Product {
     private int productStock;
 
     public Product (String name, int price, int stock) {
-        String productName = name;
-        int productPrice = price;
-        int productStock = stock;
+        productName = name;
+        productPrice = price;
+        productStock = stock;
     }
 
     // Getters
