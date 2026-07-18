@@ -1,0 +1,27 @@
+package sandbox.Products.TerminalShop;
+
+public class Product {
+    private String name;
+    private int price;
+    private int stock;
+
+    public Product (String name, int price, int stock) {
+        String productName = name;
+        int productPrice = price;
+        int productStock = stock;
+    }
+}
+
+
+
+/*
+The Blueprint: Product.java
+This file is your encapsulated data model.
+Attributes (Private): It must have a name (String), price (int), and stock (int).
+The Constructor: Build the object with these three values.
+Read-Only Access: Create Getters so the outside world can read the data.
+
+The Action: Create a method inside this blueprint (e.g., public boolean buyItem()).
+If the stock is greater than 0, reduce the stock by 1 and return true (success).
+If the stock is 0, print "Out of Stock" and return false. Do not let the main menu manually change the stock!
+*/
