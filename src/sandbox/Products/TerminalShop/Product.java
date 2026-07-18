@@ -1,15 +1,29 @@
 package sandbox.Products.TerminalShop;
 
 public class Product {
-    private String name;
-    private int price;
-    private int stock;
+    private String productName;
+    private int productPrice;
+    private int productStock;
 
     public Product (String name, int price, int stock) {
         String productName = name;
         int productPrice = price;
         int productStock = stock;
     }
+
+    // Getters
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getProductPrice() {
+        return productPrice;
+    }
+
+    public int getProductStock() {
+        return productStock;
+    }
+
 }
 
 
