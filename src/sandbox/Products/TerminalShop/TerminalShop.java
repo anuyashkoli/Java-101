@@ -1,6 +1,9 @@
 package sandbox.Products.TerminalShop;
 
 public class TerminalShop {
+    public static void main(String[] Args) {
+
+    }
 }
 
 
