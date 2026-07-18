@@ -26,7 +26,7 @@ public class Product {
 
     public boolean productOrder() {
         if (productStock > 0) {
-            System.out.println("📦 Order Placed !");
+            System.out.println("📦 Order Placed for " + productName);
             productStock = productStock - 1;
             return true;
         } else {
