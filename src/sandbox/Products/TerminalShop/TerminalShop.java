@@ -2,6 +2,7 @@ package sandbox.Products.TerminalShop;
 
 import java.awt.*;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,41 +23,52 @@ public class TerminalShop {
         productHashMap.put(3, Dell);
 
         while (trapped) {
-            System.out.println("Select Any One: ");
-            System.out.println("1. View Inventory");
-            System.out.println("2. Buy an Item");
-            System.out.println("3. Exit");
-            int userChoice = ask.nextInt();
+            try {
+                System.out.println("Select Any One: ");
+                System.out.println("1. View Inventory");
+                System.out.println("2. Buy an Item");
+                System.out.println("3. Exit");
+                int userChoice = ask.nextInt();
 
-            switch (userChoice) {
-                case 1:
-                    System.out.println("PRODUCT INVENTORY ⤵️");
-                    for (int mapper = 1; mapper <= productHashMap.size(); mapper++) {
-                        System.out.print(mapper + ", "); // Product ID
-                        System.out.print(productHashMap.get(mapper).getProductName() + ", "); // Product Name
-                        System.out.print(productHashMap.get(mapper).getProductPrice() + ", "); // Product Price
-                        System.out.print(productHashMap.get(mapper).getProductStock() + "\n"); // Product Stock
-                    }
-                    System.out.println();
-                    break;
+                switch (userChoice) {
+                    case 1:
+                        System.out.println("PRODUCT INVENTORY ⤵️");
+                        for (int mapper = 1; mapper <= productHashMap.size(); mapper++) {
+                            System.out.print(mapper + ", "); // Product ID
+                            System.out.print(productHashMap.get(mapper).getProductName() + ", "); // Product Name
+                            System.out.print(productHashMap.get(mapper).getProductPrice() + ", "); // Product Price
+                            System.out.print(productHashMap.get(mapper).getProductStock() + "\n"); // Product Stock
+                        }
+                        System.out.println();
+                        break;
 
-                case 2:
-                    System.out.println("PLACE YOUR ORDER");
-                    System.out.println("Enter the Product ID: ");
-                    int productID = ask.nextInt();
+                    case 2:
+                        System.out.println("PLACE YOUR ORDER");
+                        System.out.println("Enter the Product ID: ");
+                        int productID = ask.nextInt();
 
-                    if (productHashMap.containsKey(productID)) {
-                        productHashMap.get(productID).productOrder();
-                    } else {
-                        System.out.println("🚫 Requested Item Not Found");
-                    }
-                    System.out.println();
-                    break;
+                        if (productHashMap.containsKey(productID)) {
+                            productHashMap.get(productID).productOrder();
+                        } else {
+                            System.out.println("🚫 Requested Item Not Found");
+                        }
+                        System.out.println();
+                        break;
 
-                case 3:
-                    System.out.println("Have A Nice Day");
-                    trapped = false;
+                    case 3:
+                        System.out.println("Have A Nice Day");
+                        trapped = false;
+
+                    default:
+                        System.out.println("Try Again");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("INVALID OPTION");
+                System.out.println();
+                ask.nextLine();
             }
+
+
         }
 
     }
@@ -76,7 +88,7 @@ This file is your front-end UI and database.
 ✔️ ️Buy an Item: Ask the user for the Item ID they want to buy. Use .containsKey() to make sure the ID exists. If it does, trigger the buy method on that specific object.
 ✔️ Exit: Shut down the program.
 
-The Armor (Exception Handling): Wrap your menu input inside a try/catch block.
+✔️ The Armor (Exception Handling): Wrap your menu input inside a try/catch block.
 If the user types a word instead of a menu number,
 catch the InputMismatchException, clear the scanner buffer with ask.nextLine(),
 and gracefully loop back to the menu without crashing.*/
