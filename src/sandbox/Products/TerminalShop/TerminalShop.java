@@ -1,5 +1,9 @@
 package sandbox.Products.TerminalShop;
 
+import sandbox.Inheritance.Cashier;
+import sandbox.Inheritance.Employee;
+import sandbox.Inheritance.Manager;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -22,6 +26,17 @@ public class TerminalShop {
         productHashMap.put(2, Lenovo);
         productHashMap.put(3, Dell);
 
+        Employee unemployedMe = new Employee(1, "Anuyash", 1000);
+        Cashier cashier = new Cashier(2, "Ambani", 1);
+        Manager manager = new Manager(3, "Modi", 1);
+
+        System.out.println("--------------------");
+        System.out.println("Employee Detail: " + "\nEmployee's ID: " + unemployedMe.getEmployeeID() + "\nEmployee's Name: " + unemployedMe.getEmployeeName() + "\nEmployee's Salary: " + unemployedMe.getEmployeeSalary());
+        System.out.println("--------------------");
+        System.out.println("Cashier Detail: " + "\nCashier's ID: " + cashier.getEmployeeID() + "\nCashier's Name: " + cashier.getEmployeeName() + "\nCashier's Salary: " + cashier.getEmployeeSalary());
+        System.out.println("--------------------");
+        System.out.println("Manager Detail: " + "\nManager's ID: " + manager.getEmployeeID() + "\nManager's Name: " + manager.getEmployeeName() + "\nManager's Salary: " + manager.getEmployeeSalary());
+        System.out.println("---------x----------");
         while (trapped) {
             try {
                 System.out.println("Select Any One: ");
