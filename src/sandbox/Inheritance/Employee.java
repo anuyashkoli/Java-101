@@ -1,5 +1,8 @@
 package sandbox.Inheritance;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Employee {
     private int employeeID;
     private String employeeName;
@@ -10,6 +13,8 @@ public class Employee {
         employeeName = name;
         employeeSalary = salary;
     }
+
+    Map<Integer, Employee> employeeMap = new HashMap<>();
 
     public int getEmployeeID() {
         return employeeID;

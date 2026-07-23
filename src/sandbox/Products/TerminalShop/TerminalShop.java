@@ -18,7 +18,7 @@ public class TerminalShop {
     public static void main(String[] Args) {
         Map<Integer, Product> productHashMap = new HashMap<>();
 
-        //Preloading
+        // Preloading Products
         Product HP = new Product("HP Laptop", 50000, 1);
         Product Lenovo = new Product("Lenovo Laptop", 55000, 10);
         Product Dell = new Product("Dell Laptop", 60000, 10);
@@ -26,17 +26,6 @@ public class TerminalShop {
         productHashMap.put(2, Lenovo);
         productHashMap.put(3, Dell);
 
-        Employee unemployedMe = new Employee(1, "Anuyash", 1000);
-        Cashier cashier = new Cashier(2, "Ambani", 1);
-        Manager manager = new Manager(3, "Modi", 1);
-
-        System.out.println("--------------------");
-        System.out.println("Employee Detail: " + "\nEmployee's ID: " + unemployedMe.getEmployeeID() + "\nEmployee's Name: " + unemployedMe.getEmployeeName() + "\nEmployee's Salary: " + unemployedMe.getEmployeeSalary());
-        System.out.println("--------------------");
-        System.out.println("Cashier Detail: " + "\nCashier's ID: " + cashier.getEmployeeID() + "\nCashier's Name: " + cashier.getEmployeeName() + "\nCashier's Salary: " + cashier.getEmployeeSalary());
-        System.out.println("--------------------");
-        System.out.println("Manager Detail: " + "\nManager's ID: " + manager.getEmployeeID() + "\nManager's Name: " + manager.getEmployeeName() + "\nManager's Salary: " + manager.getEmployeeSalary());
-        System.out.println("---------x----------");
         while (trapped) {
             try {
                 System.out.println("Select Any One: ");
