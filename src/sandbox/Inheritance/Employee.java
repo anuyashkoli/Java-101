@@ -14,7 +14,6 @@ public class Employee {
         employeeSalary = salary;
     }
 
-    Map<Integer, Employee> employeeMap = new HashMap<>();
 
     public int getEmployeeID() {
         return employeeID;

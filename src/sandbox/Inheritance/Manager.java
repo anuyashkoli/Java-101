@@ -1,10 +1,7 @@
 package sandbox.Inheritance;
 
-import sandbox.Products.TerminalShop.AdminPanel;
-
+import java.util.Map;
 import java.util.Scanner;
-
-import static sandbox.Products.TerminalShop.AdminPanel.*;
 
 public class Manager extends Employee {
 
@@ -15,13 +12,15 @@ public class Manager extends Employee {
         super(ID, name, Salary);
     }
 
-    // Firing Employees
-    public void fireEmployee() {
-        System.out.println("Sorry to do this");
+    //Hiring Candidate
+    public void hireCandidate(Map<Integer, Employee> employeeMap, int candidateID, String candidateName, int candidateSalary) {
+        Employee newCandidate = new Employee(candidateID, candidateName, candidateSalary);
+        employeeMap.put(candidateID, newCandidate);
+    }
 
-        System.out.println("Enter Employee ID:");
-        int userInputID = ask.nextInt();
-        System.out.println(employeeMap.get(userInputID).getEmployeeName() + " has been fired");
-        employeeMap.remove(userInputID);
+    // Firing Employees
+    public void fireEmployee(Map<Integer, Employee> employeeMap, int employeeID) {
+        System.out.println("Employee has been fired: " + employeeMap.get(employeeID).getEmployeeName());
+        employeeMap.remove(employeeID);
     }
 }

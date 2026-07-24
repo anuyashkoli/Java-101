@@ -15,14 +15,10 @@ public class AdminPanel {
     static String pin = "1010";
 
     public static void main(String[] Args) {
+
         Map<Integer, Employee> employeeMap = new HashMap<>();
 
-        // Preloading Employees
-        Employee unemployedMe = new Employee(1, "Anuyash", 1000);
-        Cashier cashier = new Cashier(2, "Ambani", 1);
-        Manager manager = new Manager(3, "Modi", 1);
-        employeeMap.put(unemployedMe.getEmployeeID(), unemployedMe);
-        employeeMap.put(cashier.getEmployeeID(), cashier);
+        Manager manager = new Manager(1, "Mr. Manager", 10000);
         employeeMap.put(manager.getEmployeeID(), manager);
 
         while (isTrying) {
@@ -43,45 +39,30 @@ public class AdminPanel {
                     switch (userOption) {
                         case 1:
                             System.out.println("--------- Employee List ----------");
-                            for (int ID : employeeMap.keySet()) {
-
-                                System.out.println("Employee Detail - " + employeeMap.get(ID).getClass());
-
-                                System.out.println("Employee ID: " + ID);
-                                System.out.println("Employee Name: " + employeeMap.get(ID).getEmployeeName());
-                                System.out.println("Employee Salary: " + employeeMap.get(ID).getEmployeeSalary());
-                                System.out.println("---------x----------");
+                            for (int employeeID : employeeMap.keySet()) {
+                                System.out.println("Employee ID: " + employeeID);
+                                System.out.println("Employee Name: " + employeeMap.get(employeeID).getEmployeeName());
+                                System.out.println("Employee Salary: " + employeeMap.get(employeeID).getEmployeeSalary());
+                                System.out.println("----------------x-----------------");
                             }
                             break;
 
                         case 2:
                             System.out.println("Enter Candidate Details:");
-
-                            System.out.println("ID: ");
+                            System.out.println("Candidate ID: ");
                             int candidateID = ask.nextInt();
                             ask.nextLine();
-                            System.out.println("Name: ");
-                            String candidateName = ask.nextLine();
-                            System.out.println("Salary: ");
+                            System.out.println("Candidate Name: ");
+                            String  candidateName = ask.nextLine();
+                            System.out.println("Candidate Salary: ");
                             int candidateSalary = ask.nextInt();
-
-                            System.out.println("[New Employee]");
-                            System.out.println("ID: " + candidateID);
-                            System.out.println("Candidate Name: " + candidateName);
-                            System.out.println("Candidate Salary: " + candidateSalary);
-
-                            Employee newCandidate = new Employee(candidateID, candidateName, candidateSalary);
-                            employeeMap.put(candidateID, newCandidate);
-                            System.out.println("Welcome to the Team");
+                            manager.hireCandidate(employeeMap, candidateID, candidateName, candidateSalary);
                             break;
 
                         case 3:
-                            System.out.println("Sorry to do this");
-
                             System.out.println("Enter Employee ID:");
-                            int userInputID = ask.nextInt();
-                            System.out.println(employeeMap.get(userInputID).getEmployeeName() + " has been fired");
-                            employeeMap.remove(userInputID);
+                            int employeeID = ask.nextInt();
+                            manager.fireEmployee(employeeMap,employeeID);
                             break;
 
                         case 4:
