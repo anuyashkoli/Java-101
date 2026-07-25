@@ -4,6 +4,10 @@ import sandbox.Inheritance.Cashier;
 import sandbox.Inheritance.Employee;
 import sandbox.Inheritance.Manager;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IO;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
@@ -21,6 +25,28 @@ public class AdminPanel {
 
         Manager manager = new Manager(1, "Mr. Manager", 10000);
         employeeMap.put(manager.getEmployeeID(), manager);
+
+        try {
+            File allEmployees = new File("Employees.txt");
+            Scanner reader = new Scanner(allEmployees);
+            if (!reader.hasNextLine()) {
+                System.out.println("No Employee Detail Exists");
+            } else {
+                while (reader.hasNextLine()) {
+                    String currentLine = reader.nextLine();
+                    String[] tokens = currentLine.split(",");
+                    int ID = Integer.parseInt(tokens[0]);
+                    String name = tokens[1];
+                    int salary = Integer.parseInt(tokens[2]);
+                    Employee newGuy = new Employee(ID, name, salary);
+                    employeeMap.put(ID, newGuy);
+                }
+            }
+            reader.close();
+
+        } catch (IOException io) {
+            System.out.println("😵‍💫 Padhne main takleef ho rahi hai");
+        }
 
         while (isTrying) {
             System.out.println("Enter your Credentials: or 'q' for exit");
@@ -52,13 +78,20 @@ public class AdminPanel {
 
                             case 2:
                                 System.out.println("Enter Candidate Details:");
-                                System.out.println("Candidate ID: ");
+                                System.out.print("Candidate ID: ");
                                 int candidateID = ask.nextInt();
                                 ask.nextLine();
-                                System.out.println("Candidate Name: ");
+                                System.out.print("Candidate Name: ");
                                 String candidateName = ask.nextLine();
-                                System.out.println("Candidate Salary: ");
+                                System.out.print("Candidate Salary: ");
                                 int candidateSalary = ask.nextInt();
+                                try {
+                                    FileWriter writer = new FileWriter("Employees.txt", true);
+                                    writer.write(candidateID + "," + candidateName + "," + candidateSalary + "\n");
+                                    writer.close();
+                                } catch (IOException io) {
+                                    System.out.println("❌ File main kuch toh gadbad hai");
+                                }
                                 manager.hireCandidate(employeeMap, candidateID, candidateName, candidateSalary);
                                 break;
 
