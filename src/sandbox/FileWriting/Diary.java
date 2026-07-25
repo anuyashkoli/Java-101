@@ -22,14 +22,17 @@ public class Diary {
 
                 switch (userOption) {
                     case 1:
-                        System.out.print("Name: ");
-                        String myName = ask.nextLine();
-                        System.out.print("Your Entry: ");
-                        String logEntry = ask.nextLine();
+                        System.out.print("Enter Employee ID: ");
+                        int employeeID = ask.nextInt();
+                        ask.nextLine();
+                        System.out.print("Enter Employee Name: ");
+                        String employeeName = ask.nextLine();
+                        System.out.print("Enter Employee Salary: ");
+                        String employeeSalary = ask.nextLine();
 
                         try {
-                            FileWriter writer = new FileWriter("Diary.txt", true);
-                            writer.write("\n===============\n" + myName + "\n" + logEntry);
+                            FileWriter writer = new FileWriter("Employees.txt", true);
+                            writer.write(employeeID + ", " + employeeName + ", " + employeeSalary + "\n");
                             writer.close();
                         } catch (IOException io) {
                             System.out.println("❌ Couldn't Read into the file");
@@ -37,11 +40,11 @@ public class Diary {
                         break;
                     case 2:
                         try {
-                            File myDiary = new File("Diary.txt");
+                            File myDiary = new File("Employees.txt");
                             Scanner reader = new Scanner(myDiary);
 
                             if (!reader.hasNextLine()) {
-                                System.out.println("📖 Diary is Empty");
+                                System.out.println("No Employee Data");
                             } else {
                                 while (reader.hasNextLine()) {
                                     String currentLine = reader.nextLine();
