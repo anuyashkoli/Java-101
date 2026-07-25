@@ -47,8 +47,8 @@ public class Diary {
                                     String currentLine = reader.nextLine();
                                     System.out.println(currentLine);
                                 }
-                                reader.close();
                             }
+                            reader.close();
                         } catch (IOException io) {
                             System.out.println("❌ Couldn't Read out of the file");
                         }
