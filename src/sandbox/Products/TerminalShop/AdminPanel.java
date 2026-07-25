@@ -5,6 +5,7 @@ import sandbox.Inheritance.Employee;
 import sandbox.Inheritance.Manager;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -34,45 +35,52 @@ public class AdminPanel {
                     System.out.println("2. Hire Employee");
                     System.out.println("3. Fire Employee");
                     System.out.println("4. Exit");
-                    int userOption = ask.nextInt();
 
-                    switch (userOption) {
-                        case 1:
-                            System.out.println("--------- Employee List ----------");
-                            for (int employeeID : employeeMap.keySet()) {
-                                System.out.println("Employee ID: " + employeeID);
-                                System.out.println("Employee Name: " + employeeMap.get(employeeID).getEmployeeName());
-                                System.out.println("Employee Salary: " + employeeMap.get(employeeID).getEmployeeSalary());
-                                System.out.println("----------------x-----------------");
-                            }
-                            break;
+                    try {
+                        int userOption = ask.nextInt();
 
-                        case 2:
-                            System.out.println("Enter Candidate Details:");
-                            System.out.println("Candidate ID: ");
-                            int candidateID = ask.nextInt();
-                            ask.nextLine();
-                            System.out.println("Candidate Name: ");
-                            String  candidateName = ask.nextLine();
-                            System.out.println("Candidate Salary: ");
-                            int candidateSalary = ask.nextInt();
-                            manager.hireCandidate(employeeMap, candidateID, candidateName, candidateSalary);
-                            break;
+                        switch (userOption) {
+                            case 1:
+                                System.out.println("--------- Employee List ----------");
+                                for (int employeeID : employeeMap.keySet()) {
+                                    System.out.println("Employee ID: " + employeeID);
+                                    System.out.println("Employee Name: " + employeeMap.get(employeeID).getEmployeeName());
+                                    System.out.println("Employee Salary: " + employeeMap.get(employeeID).getEmployeeSalary());
+                                    System.out.println("----------------x-----------------");
+                                }
+                                break;
 
-                        case 3:
-                            System.out.println("Enter Employee ID:");
-                            int employeeID = ask.nextInt();
-                            manager.fireEmployee(employeeMap,employeeID);
-                            break;
+                            case 2:
+                                System.out.println("Enter Candidate Details:");
+                                System.out.println("Candidate ID: ");
+                                int candidateID = ask.nextInt();
+                                ask.nextLine();
+                                System.out.println("Candidate Name: ");
+                                String candidateName = ask.nextLine();
+                                System.out.println("Candidate Salary: ");
+                                int candidateSalary = ask.nextInt();
+                                manager.hireCandidate(employeeMap, candidateID, candidateName, candidateSalary);
+                                break;
 
-                        case 4:
-                            System.out.println("Closing...........");
-                            isLoggedIn = false;
-                            isTrying = false;
-                            break;
+                            case 3:
+                                System.out.println("Enter Employee ID:");
+                                int employeeID = ask.nextInt();
+                                manager.fireEmployee(employeeMap, employeeID);
+                                break;
 
-                        default:
-                            System.out.println("Try Again");
+                            case 4:
+                                System.out.println("Closing...........");
+                                isLoggedIn = false;
+                                isTrying = false;
+                                break;
+
+                            default:
+                                System.out.println("Try Again");
+                        }
+
+                    } catch (InputMismatchException invalidInput) {
+                        System.out.println("Only Numerical values are accepted");
+                        ask.nextLine();
                     }
                 }
             } else if (userPin.equalsIgnoreCase("q")) {
