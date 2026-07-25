@@ -11,3 +11,4 @@ Thumbs.db
 
 # Ignore the entire IntelliJ build output folder
 out/
+/Daily Log.txt
