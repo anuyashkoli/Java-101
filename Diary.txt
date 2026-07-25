@@ -1,0 +1,9 @@
+===============
+Anuyash
+Day 1
+===============
+Anuyash
+Testing out the Diary
+===============
+Anuyash 
+Added line break before writing new entry
