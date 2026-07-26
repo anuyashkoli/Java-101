@@ -1,12 +1,10 @@
 package sandbox.Products.TerminalShop;
 
-import sandbox.Inheritance.Cashier;
 import sandbox.Inheritance.Employee;
 import sandbox.Inheritance.Manager;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IO;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -99,6 +97,19 @@ public class AdminPanel {
                                 System.out.println("Enter Employee ID:");
                                 int employeeID = ask.nextInt();
                                 manager.fireEmployee(employeeMap, employeeID);
+                                try {
+                                    FileWriter writer = new FileWriter("Employees.txt");
+                                    for (int survivorID : employeeMap.keySet()) {
+                                        int ID = employeeMap.get(survivorID).getEmployeeID();
+                                        String survivorName = employeeMap.get(survivorID).getEmployeeName();
+                                        int survivorSalary = employeeMap.get(survivorID).getEmployeeSalary();
+
+                                        writer.write(ID + "," + survivorName + "," + survivorSalary + "\n");
+                                    }
+                                    writer.close();
+                                } catch (IOException io) {
+                                    System.out.println("🚫 File Not Found");
+                                }
                                 break;
 
                             case 4:
