@@ -1,5 +1,11 @@
 package sandbox.Inheritance;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -23,4 +29,18 @@ public class Manager extends Employee {
         System.out.println("Employee has been fired: " + employeeMap.get(employeeID).getEmployeeName());
         employeeMap.remove(employeeID);
     }
+
+    public void syncDatabase(Map<Integer, Employee> employeeMap) {
+        try {
+            FileWriter writer = new FileWriter("Employees.txt", true);
+            for (int ID : employeeMap.keySet()) {
+                writer.write(ID + "," + employeeMap.get(ID).getEmployeeName() + "," + employeeMap.get(ID).getEmployeeSalary() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("🚫 Kuch toh gadbad hain, Data Sync nahi ho rela");
+        }
+    }
+
+
 }

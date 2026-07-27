@@ -24,6 +24,7 @@ public class AdminPanel {
         Manager manager = new Manager(1, "Mr. Manager", 10000);
         employeeMap.put(manager.getEmployeeID(), manager);
 
+        // `newGuy` - Employee Object Creating Block
         try {
             File allEmployees = new File("Employees.txt");
             Scanner reader = new Scanner(allEmployees);
@@ -83,33 +84,15 @@ public class AdminPanel {
                                 String candidateName = ask.nextLine();
                                 System.out.print("Candidate Salary: ");
                                 int candidateSalary = ask.nextInt();
-                                try {
-                                    FileWriter writer = new FileWriter("Employees.txt", true);
-                                    writer.write(candidateID + "," + candidateName + "," + candidateSalary + "\n");
-                                    writer.close();
-                                } catch (IOException io) {
-                                    System.out.println("❌ File main kuch toh gadbad hai");
-                                }
                                 manager.hireCandidate(employeeMap, candidateID, candidateName, candidateSalary);
+                                manager.syncDatabase(employeeMap);
                                 break;
 
                             case 3:
                                 System.out.println("Enter Employee ID:");
                                 int employeeID = ask.nextInt();
                                 manager.fireEmployee(employeeMap, employeeID);
-                                try {
-                                    FileWriter writer = new FileWriter("Employees.txt");
-                                    for (int survivorID : employeeMap.keySet()) {
-                                        int ID = employeeMap.get(survivorID).getEmployeeID();
-                                        String survivorName = employeeMap.get(survivorID).getEmployeeName();
-                                        int survivorSalary = employeeMap.get(survivorID).getEmployeeSalary();
-
-                                        writer.write(ID + "," + survivorName + "," + survivorSalary + "\n");
-                                    }
-                                    writer.close();
-                                } catch (IOException io) {
-                                    System.out.println("🚫 File Not Found");
-                                }
+                                manager.syncDatabase(employeeMap);
                                 break;
 
                             case 4:
