@@ -32,7 +32,7 @@ public class Manager extends Employee {
 
     public void syncDatabase(Map<Integer, Employee> employeeMap) {
         try {
-            FileWriter writer = new FileWriter("Employees.txt", true);
+            FileWriter writer = new FileWriter("Employees.txt");
             for (int ID : employeeMap.keySet()) {
                 writer.write(ID + "," + employeeMap.get(ID).getEmployeeName() + "," + employeeMap.get(ID).getEmployeeSalary() + "\n");
             }
