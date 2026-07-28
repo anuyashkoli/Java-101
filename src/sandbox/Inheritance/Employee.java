@@ -1,9 +1,11 @@
 package sandbox.Inheritance;
 
+import sandbox.Products.TerminalShop.Payable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Employee {
+public class Employee implements Payable {
     private int employeeID;
     private String employeeName;
     private int employeeSalary;
@@ -25,5 +27,10 @@ public class Employee {
 
     public int getEmployeeSalary() {
         return employeeSalary;
+    }
+
+    @Override
+    public void processPayment() {
+        System.out.println("Paying Payment to: " + employeeName);
     }
 }
