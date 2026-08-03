@@ -6,10 +6,8 @@ import sandbox.Inheritance.Manager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Map;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class AdminPanel {
     static Scanner ask = new Scanner(System.in);
@@ -23,6 +21,20 @@ public class AdminPanel {
 
         Manager manager = new Manager(1, "Mr. Manager", 10000);
         employeeMap.put(manager.getEmployeeID(), manager);
+
+        ArrayList<Payable> theUnifiedLedger = new ArrayList<>();
+
+        UtilityBill IntelliJ = new UtilityBill("JetBrains", 10);
+        UtilityBill Gemini = new UtilityBill("Google", 19560);
+
+        theUnifiedLedger.add(IntelliJ);
+        theUnifiedLedger.add(Gemini);
+        theUnifiedLedger.add(manager);
+
+        System.out.println("Demo Printing Payable Amount for Companies and Employees");
+        for (Payable item: theUnifiedLedger) {
+            item.processPayment();
+        }
 
         // `newGuy` - Employee Object Creating Block
         try {
