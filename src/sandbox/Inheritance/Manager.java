@@ -1,11 +1,7 @@
 package sandbox.Inheritance;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -42,5 +38,17 @@ public class Manager extends Employee {
         }
     }
 
-
+    public void exportToJSON(Map<Integer, Employee> employeeMap) {
+        try {
+            FileWriter writer = new FileWriter("database.json");
+            for (int ID : employeeMap.keySet()) {
+                writer.write("{\n" + "\"id\" : " + ID + ",\n" +
+                        "\"name\" : " + "\"" + employeeMap.get(ID).getEmployeeName() + "\"" + ",\n" +
+                        "\"salary\" : " + "\"" + employeeMap.get(ID).getEmployeeSalary() + "\"" + ",\n} \n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

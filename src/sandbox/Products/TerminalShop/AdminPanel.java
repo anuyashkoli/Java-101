@@ -4,9 +4,7 @@ import sandbox.Inheritance.Employee;
 import sandbox.Inheritance.Manager;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class AdminPanel {
@@ -85,6 +83,7 @@ public class AdminPanel {
                                     System.out.println("Employee Salary: " + employeeMap.get(employeeID).getEmployeeSalary());
                                     System.out.println("----------------x-----------------");
                                 }
+                                manager.exportToJSON(employeeMap);
                                 break;
 
                             case 2:
