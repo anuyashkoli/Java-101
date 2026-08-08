@@ -30,25 +30,47 @@ public class AdminPanel {
         theUnifiedLedger.add(manager);
 
         System.out.println("Demo Printing Payable Amount for Companies and Employees");
-        for (Payable item: theUnifiedLedger) {
+        for (Payable item : theUnifiedLedger) {
             item.processPayment();
         }
 
         // `newGuy` - Employee Object Creating Block
         try {
-            File allEmployees = new File("Employees.txt");
+            File allEmployees = new File("database.json");
             Scanner reader = new Scanner(allEmployees);
             if (!reader.hasNextLine()) {
                 System.out.println("No Employee Detail Exists");
             } else {
+                int currentID = 0;
+                String currentName = "";
+                int currentSalary = 0;
+                System.out.println("===============================");
                 while (reader.hasNextLine()) {
                     String currentLine = reader.nextLine();
-                    String[] tokens = currentLine.split(",");
-                    int ID = Integer.parseInt(tokens[0]);
-                    String name = tokens[1];
-                    int salary = Integer.parseInt(tokens[2]);
-                    Employee newGuy = new Employee(ID, name, salary);
-                    employeeMap.put(ID, newGuy);
+                    if (currentLine.contains("\"id\"")) {
+                        currentLine = currentLine.replace("\"id\"", "");
+                        currentLine = currentLine.replace(":", "");
+                        currentLine = currentLine.replace(",", "");
+                        currentLine = currentLine.trim();
+                        currentID = Integer.parseInt(currentLine);
+                    } else if (currentLine.contains("\"name\"")) {
+                        currentLine = currentLine.replace("\"name\"", "");
+                        currentLine = currentLine.replace(":", "");
+                        currentLine = currentLine.replace(",", "");
+                        currentLine = currentLine.replace("\"", "");
+                        currentLine = currentLine.trim();
+                        currentName = currentLine;
+                    } else if (currentLine.contains("\"salary\"")) {
+                        currentLine = currentLine.replace("\"salary\"", "");
+                        currentLine = currentLine.replace(":", "");
+                        currentLine = currentLine.replace(",", "");
+                        currentLine = currentLine.replace("\"", "");
+                        currentLine = currentLine.trim();
+                        currentSalary = Integer.parseInt(currentLine);
+                    } else if (currentLine.contains("}")) {
+                        Employee newGuy = new Employee(currentID, currentName, currentSalary);
+                        employeeMap.put(currentID, newGuy);
+                    }
                 }
             }
             reader.close();
