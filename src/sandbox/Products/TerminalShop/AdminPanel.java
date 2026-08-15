@@ -5,6 +5,10 @@ import sandbox.Inheritance.Manager;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 
 public class AdminPanel {
@@ -12,6 +16,44 @@ public class AdminPanel {
     static boolean isLoggedIn = false;
     static boolean isTrying = true;
     static String pin = "1010";
+
+    public class NetworkClient {
+        public static void printDailyJoke() {
+            try {
+                // 1. Open a browser window (HttpClient)
+                HttpClient client = HttpClient.newHttpClient();
+
+                // 2. Type in the URL (HttpRequest)
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create("https://official-joke-api.appspot.com/random_joke"))
+                        .build();
+
+                // 3. Press Enter and catch the JSON text that comes back (HttpResponse)
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println("Daily Dose of Joke");
+                String rawJson = response.body();
+                String[] jsonPieces = rawJson.split(",");
+                // Spitting by " and Printing Raw JSON
+                for (int piece = 0; piece < jsonPieces.length; piece++) {
+
+                    if (jsonPieces[piece].contains("\"setup\"")) {
+                        String cleanedSetup = jsonPieces[piece].replace("\"setup\"", "Setup - ");
+                        cleanedSetup = cleanedSetup.replace("\"", "");
+                        cleanedSetup = cleanedSetup.replace(":", "");
+                        System.out.print(cleanedSetup.trim() + "\n");
+
+                    }  if (jsonPieces[piece].contains("\"punchline\"")) {
+                        String cleanedPunchline = jsonPieces[piece].replace("\"punchline\"", "Punchline - ");
+                        cleanedPunchline = cleanedPunchline.replace("\"", "");
+                        cleanedPunchline = cleanedPunchline.replace(":", "");
+                        System.out.println(cleanedPunchline.trim() + "\n\n");
+                    }
+                }
+            } catch (IOException | InterruptedException e) {
+                System.out.println("❌ Internet Connection Failed");
+            }
+        }
+    }
 
     public static void main(String[] Args) {
 
@@ -29,7 +71,6 @@ public class AdminPanel {
         theUnifiedLedger.add(Gemini);
         theUnifiedLedger.add(manager);
 
-        System.out.println("Demo Printing Payable Amount for Companies and Employees");
         for (Payable item : theUnifiedLedger) {
             item.processPayment();
         }
@@ -80,6 +121,7 @@ public class AdminPanel {
         }
 
         while (isTrying) {
+            NetworkClient.printDailyJoke();
             System.out.println("Enter your Credentials: or 'q' for exit");
             String userPin = ask.nextLine();
 
