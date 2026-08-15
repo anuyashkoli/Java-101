@@ -18,8 +18,29 @@ public static void main(String[] Args) {
 
         // 3. Press Enter and catch the JSON text that comes back (HttpResponse)
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        String rawJson = response.body();
+        String[] jsonPieces = rawJson.split(",");
+        // Spitting by " and Printing Raw JSON
+        for (int piece = 0; piece < jsonPieces.length; piece++) {
+
+            if (jsonPieces[piece].contains("\"setup\"")) {
+                String cleanedSetup = jsonPieces[piece].replace("\"setup\"", "Setup - ");
+                    cleanedSetup = cleanedSetup.replace("\"", "");
+                    cleanedSetup = cleanedSetup.replace(":", "");
+                    System.out.print(cleanedSetup.trim() + "\n");
+
+            }  if (jsonPieces[piece].contains("\"punchline\"")) {
+                String cleanedPunchline = jsonPieces[piece].replace("\"punchline\"", "Punchline - ");
+                cleanedPunchline = cleanedPunchline.replace("\"", "");
+                cleanedPunchline = cleanedPunchline.replace(":", "");
+                System.out.println(cleanedPunchline.trim());
+            }
+        }
+
+
         // 4. Print the JSON to the terminal!
-        System.out.println(response.body());
+        System.out.println("\n\nUnformatted Response Body: \n" + response.body());
 
     } catch (IOException | InterruptedException e) {
         System.out.println("❌ Internet Connection Failed");
