@@ -42,7 +42,8 @@ public class AdminPanel {
                         cleanedSetup = cleanedSetup.replace(":", "");
                         System.out.print(cleanedSetup.trim() + "\n");
 
-                    }  if (jsonPieces[piece].contains("\"punchline\"")) {
+                    }
+                    if (jsonPieces[piece].contains("\"punchline\"")) {
                         String cleanedPunchline = jsonPieces[piece].replace("\"punchline\"", "Punchline - ");
                         cleanedPunchline = cleanedPunchline.replace("\"", "");
                         cleanedPunchline = cleanedPunchline.replace(":", "");
@@ -120,8 +121,8 @@ public class AdminPanel {
             System.out.println("😵‍💫 Padhne main takleef ho rahi hai");
         }
 
+        NetworkClient.printDailyJoke();
         while (isTrying) {
-            NetworkClient.printDailyJoke();
             System.out.println("Enter your Credentials: or 'q' for exit");
             String userPin = ask.nextLine();
 
