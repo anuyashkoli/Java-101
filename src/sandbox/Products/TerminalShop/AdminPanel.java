@@ -1,5 +1,6 @@
 package sandbox.Products.TerminalShop;
 
+import com.google.gson.Gson;
 import sandbox.Inheritance.Employee;
 import sandbox.Inheritance.Manager;
 
@@ -17,7 +18,12 @@ public class AdminPanel {
     static boolean isTrying = true;
     static String pin = "1010";
 
-    public class NetworkClient {
+    public static class Joke {
+        String setup;
+        String punchline;
+    }
+
+    public static class NetworkClient {
         public static void printDailyJoke() {
             try {
                 // 1. Open a browser window (HttpClient)
@@ -30,26 +36,17 @@ public class AdminPanel {
 
                 // 3. Press Enter and catch the JSON text that comes back (HttpResponse)
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+                // GSON
                 System.out.println("Daily Dose of Joke");
                 String rawJson = response.body();
-                String[] jsonPieces = rawJson.split(",");
-                // Spitting by " and Printing Raw JSON
-                for (int piece = 0; piece < jsonPieces.length; piece++) {
 
-                    if (jsonPieces[piece].contains("\"setup\"")) {
-                        String cleanedSetup = jsonPieces[piece].replace("\"setup\"", "Setup - ");
-                        cleanedSetup = cleanedSetup.replace("\"", "");
-                        cleanedSetup = cleanedSetup.replace(":", "");
-                        System.out.print(cleanedSetup.trim() + "\n");
+                Gson gson = new Gson();
+                Joke dailyJoke = gson.fromJson(rawJson, Joke.class);
 
-                    }
-                    if (jsonPieces[piece].contains("\"punchline\"")) {
-                        String cleanedPunchline = jsonPieces[piece].replace("\"punchline\"", "Punchline - ");
-                        cleanedPunchline = cleanedPunchline.replace("\"", "");
-                        cleanedPunchline = cleanedPunchline.replace(":", "");
-                        System.out.println(cleanedPunchline.trim() + "\n\n");
-                    }
-                }
+                System.out.println("Setup: " + dailyJoke.setup);
+                System.out.println("Punchline: " + dailyJoke.punchline + "\n");
+
             } catch (IOException | InterruptedException e) {
                 System.out.println("❌ Internet Connection Failed");
             }
