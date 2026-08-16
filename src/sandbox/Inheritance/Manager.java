@@ -1,5 +1,7 @@
 package sandbox.Inheritance;
 
+import com.google.gson.Gson;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
@@ -41,11 +43,11 @@ public class Manager extends Employee {
     public void exportToJSON(Map<Integer, Employee> employeeMap) {
         try {
             FileWriter writer = new FileWriter("database.json");
-            for (int ID : employeeMap.keySet()) {
-                writer.write("{\n" + "\"id\" : " + ID + ",\n" +
-                        "\"name\" : " + "\"" + employeeMap.get(ID).getEmployeeName() + "\"" + ",\n" +
-                        "\"salary\" : " + "\"" + employeeMap.get(ID).getEmployeeSalary() + "\"" + ",\n} \n");
-            }
+            Gson gson = new Gson();
+
+            String perfectJSON = gson.toJson(employeeMap);
+            writer.write(perfectJSON);
+
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,11 +1,13 @@
 package sandbox.Products.TerminalShop;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import sandbox.Inheritance.Employee;
 import sandbox.Inheritance.Manager;
-
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -38,6 +40,7 @@ public class AdminPanel {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
                 // GSON
+                System.out.println("===============================");
                 System.out.println("Daily Dose of Joke");
                 String rawJson = response.body();
 
@@ -75,45 +78,17 @@ public class AdminPanel {
 
         // `newGuy` - Employee Object Creating Block
         try {
-            File allEmployees = new File("database.json");
-            Scanner reader = new Scanner(allEmployees);
-            if (!reader.hasNextLine()) {
-                System.out.println("No Employee Detail Exists");
-            } else {
-                int currentID = 0;
-                String currentName = "";
-                int currentSalary = 0;
-                System.out.println("===============================");
-                while (reader.hasNextLine()) {
-                    String currentLine = reader.nextLine();
-                    if (currentLine.contains("\"id\"")) {
-                        currentLine = currentLine.replace("\"id\"", "");
-                        currentLine = currentLine.replace(":", "");
-                        currentLine = currentLine.replace(",", "");
-                        currentLine = currentLine.trim();
-                        currentID = Integer.parseInt(currentLine);
-                    } else if (currentLine.contains("\"name\"")) {
-                        currentLine = currentLine.replace("\"name\"", "");
-                        currentLine = currentLine.replace(":", "");
-                        currentLine = currentLine.replace(",", "");
-                        currentLine = currentLine.replace("\"", "");
-                        currentLine = currentLine.trim();
-                        currentName = currentLine;
-                    } else if (currentLine.contains("\"salary\"")) {
-                        currentLine = currentLine.replace("\"salary\"", "");
-                        currentLine = currentLine.replace(":", "");
-                        currentLine = currentLine.replace(",", "");
-                        currentLine = currentLine.replace("\"", "");
-                        currentLine = currentLine.trim();
-                        currentSalary = Integer.parseInt(currentLine);
-                    } else if (currentLine.contains("}")) {
-                        Employee newGuy = new Employee(currentID, currentName, currentSalary);
-                        employeeMap.put(currentID, newGuy);
-                    }
-                }
-            }
-            reader.close();
+            FileReader reader = new FileReader("database.json");
+            Gson gson = new Gson();
 
+            Type mapBlueprint = new TypeToken<HashMap<Integer, Employee>>(){}.getType();
+            Map<Integer, Employee> loadedData = gson.fromJson(reader, mapBlueprint);
+
+            if (loadedData != null) {
+                employeeMap.putAll(loadedData);
+            }
+
+            reader.close();
         } catch (IOException io) {
             System.out.println("😵‍💫 Padhne main takleef ho rahi hai");
         }

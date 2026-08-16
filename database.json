@@ -1,10 +1,22 @@
 {
-  "id": 1,
-  "name": "Mr. Manager",
-  "salary": "10000"
+  "1": {
+    "employeeID": 1,
+    "employeeName": "Mr. Manager",
+    "employeeSalary": 10000
+  },
+  "7": {
+    "employeeID": 7,
+    "employeeName": "Thala",
+    "employeeSalary": 2011
+  },
+  "10": {
+    "employeeID": 10,
+    "employeeName": "Messi",
+    "employeeSalary": 10
+  },
+  "27": {
+    "employeeID": 27,
+    "employeeName": "Anuyash",
+    "employeeSalary": 1
+  }
 }
-{
-"id": 10,
-  "name": "Messi",
-  "salary": "10"
-} 

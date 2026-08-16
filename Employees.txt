@@ -1,2 +1,4 @@
 1,Mr. Manager,10000
+7,Thala,2011
 10,Messi,10
+27,Anuyash,1
