@@ -25,25 +25,20 @@ public class SmartVault {
         int userInput = ask.nextInt();
 
         if (series.length <= currentIndex) {
-            System.out.println("Limit Reached: " + series.length + " = " + currentIndex);
+            System.out.println("\n=== ARRAY EXPANSION ===\n");
             int[] extendedSeries = new int[series.length * 2];
             for (int filler = 0; filler < series.length; filler++) {
                 extendedSeries[filler] = series[filler];
             }
             series = extendedSeries;
-            series[currentIndex] = userInput;
-            displayArray();
-            currentIndex++;
-        } else {
-            series[currentIndex] = userInput;
-            displayArray();
-            currentIndex++;
         }
+        series[currentIndex] = userInput;
+        currentIndex++;
+        displayArray();
     }
 
     public void displayArray() {
-        System.out.println("Array Elements: ");
-        for (int iterator = 0; iterator <= currentIndex; iterator++) {
+        for (int iterator = 0; iterator < currentIndex; iterator++) {
             System.out.print("[" + series[iterator] + "]");
         }
         System.out.println();
