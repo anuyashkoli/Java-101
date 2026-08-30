@@ -3,43 +3,46 @@ package MISSION;
 import java.util.Scanner;
 
 public class SmartVault {
-    Scanner ask = new Scanner(System.in);
-    private int[] series = new int[5];
+
+    private int[] limitedArray = new int[5]; // Our limit-less Array
     private int currentIndex = 0;
+    Scanner ask = new Scanner(System.in);
 
-    public void main(String[] args) {
-        underFlow();
+    public void main(String[] Args) {
+        keepAsking();
     }
 
-    // Method to handle Element adding loop; Cause the adding method should only do the `adding`
-    public void underFlow() {
-        while (currentIndex <= series.length) {
-            addInArray();
+    //Method to handle the iteration
+    public void keepAsking() {
+        while (currentIndex < 23) {
+            addElement();
         }
     }
 
-    // Method to add single element in array
-    public void addInArray() {
-
-        System.out.println("Enter numbers to add: ");
+    //Method to add element in Array
+    public void addElement() {
+        System.out.print("Enter element to add: ");
         int userInput = ask.nextInt();
+        // To handle overflow
+        if (limitedArray.length <= currentIndex) {
+            System.out.println("=== ARRAY EXPANSION ===");
+            int[] extendedArray = new int[limitedArray.length * 2];
 
-        if (series.length <= currentIndex) {
-            System.out.println("\n=== ARRAY EXPANSION ===\n");
-            int[] extendedSeries = new int[series.length * 2];
-            for (int filler = 0; filler < series.length; filler++) {
-                extendedSeries[filler] = series[filler];
+            // Filling the extended Array with the data of limited Array
+            for (int filler = 0; filler < limitedArray.length; filler++) {
+                extendedArray[filler] = limitedArray[filler];
             }
-            series = extendedSeries;
+            // Reassigning the arrays so we can keep extending
+            limitedArray = extendedArray;
         }
-        series[currentIndex] = userInput;
+        limitedArray[currentIndex] = userInput;
         currentIndex++;
-        displayArray();
+        displayElements();
     }
 
-    public void displayArray() {
+    public void displayElements() {
         for (int iterator = 0; iterator < currentIndex; iterator++) {
-            System.out.print("[" + series[iterator] + "]");
+            System.out.print("[" + limitedArray[iterator] + "]");
         }
         System.out.println();
     }
