@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Browser implements BrowserAction {
 
     HistoryStack chromeHistory = new HistoryStack();
+    DownloadQueue downloadQueue = new DownloadQueue();
+
 
     @Override
     public String visitPage(String URL) {
@@ -34,8 +36,29 @@ public class Browser implements BrowserAction {
         System.out.println("Displaying History");
     }
 
+    @Override
+    public void downloadFile(String fileName) {
+        downloadQueue.enQueue(fileName);
+    }
+
+    @Override
+    public void processNextDownload() {
+        String ongoingDownload = downloadQueue.deQueue();
+        try {
+            if (ongoingDownload == null) {
+                System.out.println("No Pending Downloads");
+            } else {
+                System.out.println("Currently Downloading: " + ongoingDownload);
+            }
+        } catch (NullPointerException NPE) {
+            System.out.println(NPE.getMessage());
+        }
+    }
+
+
     public static void main(String[] args) {
         Browser Chrome = new Browser();
+
         Scanner ask = new Scanner(System.in);
         boolean isRunning = true;
         while (isRunning) {
@@ -43,7 +66,9 @@ public class Browser implements BrowserAction {
             System.out.println("1. Enter URL");
             System.out.println("2. Go Back");
             System.out.println("3. History");
-            System.out.println("4. Exit");
+            System.out.println("4. Start Download");
+            System.out.println("5. Check Download");
+            System.out.println("6. Exit");
             System.out.println("Enter your choice: [1, 2, 3, 4]");
             int userInput = ask.nextInt();
 
@@ -56,7 +81,14 @@ public class Browser implements BrowserAction {
             } else if (userInput == 3) {
                 Chrome.showHistory();
             } else if (userInput == 4) {
+                ask.nextLine();
+                String fileName = ask.nextLine();
+                Chrome.downloadFile(fileName);
+            } else if (userInput == 5) {
+                Chrome.processNextDownload();
+            } else if (userInput == 6) {
                 isRunning = false;
+                System.out.println("Thanks for Browsing");
             }
         }
     }
