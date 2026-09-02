@@ -34,7 +34,7 @@ public class Browser implements BrowserAction {
 
     @Override
     public void showHistory() {
-        System.out.println("Displaying History");
+        chromeHistory.historyStack();
     }
 
     @Override
@@ -103,9 +103,9 @@ public class Browser implements BrowserAction {
             } else if (userInput == 6) {
                 ask.nextLine();
                 String userBookmark = ask.nextLine();
-                Chrome.bookmarkBar.addBookmark(userBookmark);
+                Chrome.addBookmark(userBookmark);
             } else if (userInput == 7) {
-                Chrome.bookmarkBar.displayBookmark();
+                Chrome.displayBookmark();
             } else if (userInput == 8) {
                 isRunning = false;
                 System.out.println("Thanks for Browsing");

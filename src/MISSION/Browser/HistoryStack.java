@@ -21,8 +21,19 @@ public class HistoryStack {
             System.out.println("Nothing to return");
             return null;
         } else {
-            currentIndex --;
+            currentIndex--;
             return stackArray[currentIndex];
+        }
+    }
+
+    public void historyStack() {
+        if (currentIndex == 0) {
+            System.out.println("No History");
+        } else {
+            System.out.println("History:");
+            for (int iterator = 0; iterator < currentIndex; iterator++) {
+                System.out.println(stackArray[iterator].url);
+            }
         }
     }
 }
