@@ -6,4 +6,6 @@ public interface BrowserAction {
     public void showHistory();
     public void downloadFile(String fileName);
     public void processNextDownload();
+    public void addBookmark(String siteTitle);
+    public void displayBookmark();
 }

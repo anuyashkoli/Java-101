@@ -6,6 +6,7 @@ public class Browser implements BrowserAction {
 
     HistoryStack chromeHistory = new HistoryStack();
     DownloadQueue downloadQueue = new DownloadQueue();
+    BookmarkBar bookmarkBar = new BookmarkBar();
 
 
     @Override
@@ -55,6 +56,17 @@ public class Browser implements BrowserAction {
         }
     }
 
+    // BOOKMARKs
+    @Override
+    public void addBookmark(String siteTitle) {
+        bookmarkBar.addBookmark(siteTitle);
+    }
+
+    @Override
+    public void displayBookmark() {
+        bookmarkBar.displayBookmark();
+    }
+
 
     public static void main(String[] args) {
         Browser Chrome = new Browser();
@@ -68,8 +80,10 @@ public class Browser implements BrowserAction {
             System.out.println("3. History");
             System.out.println("4. Start Download");
             System.out.println("5. Check Download");
-            System.out.println("6. Exit");
-            System.out.println("Enter your choice: [1, 2, 3, 4]");
+            System.out.println("6. Add Bookmark");
+            System.out.println("7. Show Bookmark");
+            System.out.println("8. Exit");
+            System.out.println("Enter your choice: ");
             int userInput = ask.nextInt();
 
             if (userInput == 1) {
@@ -87,6 +101,12 @@ public class Browser implements BrowserAction {
             } else if (userInput == 5) {
                 Chrome.processNextDownload();
             } else if (userInput == 6) {
+                ask.nextLine();
+                String userBookmark = ask.nextLine();
+                Chrome.bookmarkBar.addBookmark(userBookmark);
+            } else if (userInput == 7) {
+                Chrome.bookmarkBar.displayBookmark();
+            } else if (userInput == 8) {
                 isRunning = false;
                 System.out.println("Thanks for Browsing");
             }
