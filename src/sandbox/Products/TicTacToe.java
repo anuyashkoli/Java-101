@@ -18,10 +18,12 @@ public class TicTacToe {
 
     // Initialise the Board
     public static void Canvas() {
+        int counter = 1;
         for (int cellRow = 0; cellRow < board.length; cellRow++) {
             System.out.println();
             for (int cellColumn = 0; cellColumn <= board.length - 1; cellColumn++) {
-                board[cellRow][cellColumn] = '-';
+                board[cellRow][cellColumn] = Character.forDigit(counter, 10);
+                counter++;
             }
         }
     }
@@ -40,23 +42,69 @@ public class TicTacToe {
     // Handles User Moves; Validates User Moves
     public static void theMove() {
         System.out.println("\n" + state + "'s turn");
-        System.out.print("Enter you desired row: ");
-        int userRow = ask.nextInt();
-        System.out.print("Enter your desired column: ");
-        int userColumn = ask.nextInt();
+        int userRow;
+        int userColumn = 0;
+
+        System.out.print("Enter your desired slot: ");
+        int userChoice = ask.nextInt();
+
+        switch (userChoice) {
+            case 1:
+                userRow = 0;
+                userColumn = 0;
+                break;
+
+            case 2:
+                userRow = 0;
+                userColumn = 1;
+                break;
+
+            case 3:
+                userRow = 0;
+                userColumn = 2;
+                break;
+            case 4:
+                userRow = 1;
+                userChoice = 0;
+                break;
+            case 5:
+                userRow = 1;
+                userColumn = 1;
+                break;
+            case 6:
+                userRow = 1;
+                userColumn = 2;
+                break;
+            case 7:
+                userRow = 2;
+                userColumn = 0;
+                break;
+            case 8:
+                userRow = 2;
+                userColumn = 1;
+                break;
+            case 9:
+                userRow = 2;
+                userColumn = 2;
+                break;
+            default:
+                userRow = board.length + 1;
+                userColumn = board.length + 1;
+                break;
+        }
 
         if (userRow < 0 || userRow >= board.length || userColumn < 0 || userColumn >= board.length) {  // Checking out of bound user input
             System.out.println("Andar hi khelne ka, Bahar nahi jaaneka !!");
             System.out.println("Phir se khel");
         } else {
-            if (board[userRow][userColumn] == '-') {  // Checks if the cell is blank / unmarked
+            if (board[userRow][userColumn] != 'X' && board[userRow][userColumn] != '0') {  // Checks if the cell is blank / unmarked
                 if (state == 'X') {
                     board[userRow][userColumn] = 'X';
                     turns++;
                     callTheReferee();
-                    state = 'O';
+                    state = '0';
                 } else {
-                    board[userRow][userColumn] = 'O';
+                    board[userRow][userColumn] = '0';
                     turns++;
                     callTheReferee();
                     state = 'X';
@@ -70,34 +118,34 @@ public class TicTacToe {
     public static void callTheReferee() {
         //Horizontally
         if (board[0][0] != '-' && board[0][0] == board[0][1] && board[0][1] == board[0][2]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         } else if (board[1][0] != '-' && board[1][0] == board[1][1] && board[1][1] == board[1][2]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         } else if (board[2][0] != '-' && board[2][0] == board[2][1] && board[2][1] == board[2][2]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         }
 
         //Vertically
         if (board[0][0] != '-' && board[0][0] == board[1][0] && board[1][0] == board[2][0]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         } else if (board[0][1] != '-' && board[0][1] == board[1][1] && board[1][1] == board[2][1]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         } else if (board[0][2] != '-' && board[0][2] == board[1][2] && board[1][2] == board[2][2]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         }
 
         //Diagonal
         if (board[0][0] != '-' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         } else if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-            System.out.println(state + " won");
+            System.out.println("=== " + state + " won ===");
             gameOn = false;
         }
 
