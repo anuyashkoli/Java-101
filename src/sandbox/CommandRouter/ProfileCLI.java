@@ -1,8 +1,5 @@
 package sandbox.CommandRouter;
 
-import java.awt.geom.Area;
-import java.util.Objects;
-
 public class ProfileCLI {
     public static void main(String[] Args) {
         String version = "v1.0.0";
