@@ -9,6 +9,7 @@ public class FlagParser {
                 String title = null;
                 String author = null;
                 int pages = 0;
+                boolean isRead = false;
 
                 for (int iterator = 1; iterator < Args.length; ) {
 
@@ -37,12 +38,17 @@ public class FlagParser {
                         } catch (NumberFormatException numberFormatException) {
                             System.out.println("Numerical values for pages required");
                         }
+                    } else if (Objects.equals(Args[iterator], "--read")) {
+                        isRead = true;
                     } else {
                         System.out.println("Unknown flag or stray argument: " + Args[iterator]);
                     }
                     iterator++;
                 }
-                if (author != null && title != null && pages != 0) {
+
+                if (author != null && title != null && pages != 0 && isRead) {
+                    System.out.println("\nAdded and Read: \"" + title + "\" by " + author + ", " + pages + " pages long");
+                } else if (author != null && title != null && pages != 0) {
                     System.out.println("\nAdded: \"" + title + "\" by " + author + ", " + pages + " pages long");
                 } else {
                     System.out.print("Missing Parameters: ");
