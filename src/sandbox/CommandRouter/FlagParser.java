@@ -19,16 +19,14 @@ public class FlagParser {
                         } else {
                             System.out.println("requires title value");
                         }
-                    }
-                    if (Objects.equals(Args[iterator], "--author")) {
+                    } else if (Objects.equals(Args[iterator], "--author")) {
                         if (iterator + 1 < Args.length) {
                             author = Args[iterator + 1];
                             iterator++;
                         } else {
                             System.out.println("requires author value");
                         }
-                    }
-                    if (Objects.equals(Args[iterator], "--pages")) {
+                    } else if (Objects.equals(Args[iterator], "--pages")) {
                         if (iterator + 1 < Args.length) {
                             pages = Integer.parseInt(Args[iterator + 1]);
                             iterator++;
@@ -44,9 +42,11 @@ public class FlagParser {
                     System.out.print("Missing Parameters: ");
                     if (title == null) {
                         System.out.print("title ");
-                    } else if (author == null) {
+                    }
+                    if (author == null) {
                         System.out.print("author ");
-                    } else if (pages == 0) {
+                    }
+                    if (pages == 0) {
                         System.out.print(" pages");
                     }
                 }
