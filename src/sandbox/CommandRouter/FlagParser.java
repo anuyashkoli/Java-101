@@ -13,26 +13,32 @@ public class FlagParser {
                 for (int iterator = 1; iterator < Args.length; ) {
 
                     if (Objects.equals(Args[iterator], "--title")) {
-                        if (iterator + 1 < Args.length) {
+                        if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
                             title = Args[iterator + 1];
                             iterator++;
                         } else {
                             System.out.println("requires title value");
                         }
                     } else if (Objects.equals(Args[iterator], "--author")) {
-                        if (iterator + 1 < Args.length) {
+                        if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
                             author = Args[iterator + 1];
                             iterator++;
                         } else {
                             System.out.println("requires author value");
                         }
                     } else if (Objects.equals(Args[iterator], "--pages")) {
-                        if (iterator + 1 < Args.length) {
-                            pages = Integer.parseInt(Args[iterator + 1]);
-                            iterator++;
-                        } else {
-                            System.out.println("requires pages value");
+                        try {
+                            if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
+                                pages = Integer.parseInt(Args[iterator + 1]);
+                                iterator++;
+                            } else {
+                                System.out.println("requires pages value");
+                            }
+                        } catch (NumberFormatException numberFormatException) {
+                            System.out.println("Numerical values for pages required");
                         }
+                    } else {
+                        System.out.println("Unknown flag or stray argument: " + Args[iterator]);
                     }
                     iterator++;
                 }
