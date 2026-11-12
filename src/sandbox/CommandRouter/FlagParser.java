@@ -28,17 +28,16 @@ public class FlagParser {
                             System.out.println("requires author value");
                         }
                     } else if (Objects.equals(Args[iterator], "--pages")) {
-                        try {
-                            if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
+                        if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
+                            try {
                                 pages = Integer.parseInt(Args[iterator + 1]);
-                            } else {
-                                System.out.println("requires pages value");
+                            } catch (NumberFormatException numberFormatException) {
+                                System.out.println("Numerical values for pages required");
                             }
-                        } catch (NumberFormatException numberFormatException) {
-                            System.out.println("Numerical values for pages required");
                             iterator++;
+                        } else {
+                            System.out.println("requires pages value");
                         }
-                        iterator++;
                     } else if (Objects.equals(Args[iterator], "--read")) {
                         isRead = true;
                     } else {
