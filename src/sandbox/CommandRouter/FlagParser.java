@@ -31,13 +31,14 @@ public class FlagParser {
                         try {
                             if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
                                 pages = Integer.parseInt(Args[iterator + 1]);
-                                iterator++;
                             } else {
                                 System.out.println("requires pages value");
                             }
                         } catch (NumberFormatException numberFormatException) {
                             System.out.println("Numerical values for pages required");
+                            iterator++;
                         }
+                        iterator++;
                     } else if (Objects.equals(Args[iterator], "--read")) {
                         isRead = true;
                     } else {
