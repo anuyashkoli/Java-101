@@ -23,7 +23,7 @@ public class VaultTester {
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("tsundoku_library.txt", true))) {
 //            bufferedWriter.write(newBook.toDataString());
-            bufferedWriter.newLine();
+            // bufferedWriter.newLine();
         } catch (IOException ioException) {
             System.out.println(ioException.getMessage());
         }
