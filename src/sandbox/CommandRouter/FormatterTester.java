@@ -16,9 +16,9 @@ public class FormatterTester {
         bookShelf.add(panchatantra);
         bookShelf.add(krishnaAndSudama);
 
-        for (int iterator = 0; iterator < bookShelf.size(); iterator++) {
-            if (bookShelf.get(iterator).getStatus() == Status.COMPLETED) {
-                System.out.printf("%25s | %20s | %6d | %10s%n", bookShelf.get(iterator).getTitle(), bookShelf.get(iterator).getAuthor(), bookShelf.get(iterator).getPages(), bookShelf.get(iterator).getStatus());
+        for (Book currentBook : bookShelf) {
+            if (currentBook.getStatus() == Status.COMPLETED) {
+                System.out.printf("%-20s | %-20s | %6d | %10s%n", currentBook.getTitle(), currentBook.getAuthor(), currentBook.getPages(), currentBook.getStatus());
             }
         }
     }
