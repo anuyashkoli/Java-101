@@ -16,13 +16,13 @@ public class VaultTester {
                 int pages = Integer.parseInt(choppedString[2]);
                 Status bookStatus = Status.valueOf(choppedString[3]);
                 Book brandNewBook = new Book(title, author, pages, bookStatus);
-                System.out.println("Loaded: " + brandNewBook.getTitle());
+                System.out.printf("%-20s | %-15s | %-5d%n", title, author, pages);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("tsundoku_library.txt", true))) {
-//            bufferedWriter.write(newBook.toDataString());
+            // bufferedWriter.write(newBook.toDataString());
             // bufferedWriter.newLine();
         } catch (IOException ioException) {
             System.out.println(ioException.getMessage());
