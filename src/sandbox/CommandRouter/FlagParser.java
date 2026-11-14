@@ -13,35 +13,37 @@ public class FlagParser {
 
                 for (int iterator = 1; iterator < Args.length; ) {
 
-                    if (Objects.equals(Args[iterator], "--title")) {
-                        if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
-                            title = Args[iterator + 1];
-                            iterator++;
-                        } else {
-                            System.out.println("requires title value");
-                        }
-                    } else if (Objects.equals(Args[iterator], "--author")) {
-                        if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
-                            author = Args[iterator + 1];
-                            iterator++;
-                        } else {
-                            System.out.println("requires author value");
-                        }
-                    } else if (Objects.equals(Args[iterator], "--pages")) {
-                        if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
-                            try {
-                                pages = Integer.parseInt(Args[iterator + 1]);
-                            } catch (NumberFormatException numberFormatException) {
-                                System.out.println("Numerical values for pages required");
+                    switch (Args[iterator]) {
+                        case "--title" -> {
+                            if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
+                                title = Args[iterator + 1];
+                                iterator++;
+                            } else {
+                                System.out.println("requires title value");
                             }
-                            iterator++;
-                        } else {
-                            System.out.println("requires pages value");
                         }
-                    } else if (Objects.equals(Args[iterator], "--read")) {
-                        isRead = true;
-                    } else {
-                        System.out.println("Unknown flag or stray argument: " + Args[iterator]);
+                        case "--author" -> {
+                            if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
+                                author = Args[iterator + 1];
+                                iterator++;
+                            } else {
+                                System.out.println("requires author value");
+                            }
+                        }
+                        case "--pages" -> {
+                            if (iterator + 1 < Args.length && (!Args[iterator + 1].startsWith("--"))) {
+                                try {
+                                    pages = Integer.parseInt(Args[iterator + 1]);
+                                } catch (NumberFormatException numberFormatException) {
+                                    System.out.println("Numerical values for pages required");
+                                }
+                                iterator++;
+                            } else {
+                                System.out.println("requires pages value");
+                            }
+                        }
+                        case "--read" -> isRead = true;
+                        case null, default -> System.out.println("Unknown flag or stray argument: " + Args[iterator]);
                     }
                     iterator++;
                 }
